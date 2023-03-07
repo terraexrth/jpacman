@@ -1,16 +1,12 @@
 package nl.tudelft.jpacman.ui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import nl.tudelft.jpacman.Launcher;
 
 public class MainMenu extends JFrame {
 	private JButton startButton;
@@ -18,7 +14,7 @@ public class MainMenu extends JFrame {
 
 	public MainMenu() {
 		// Set up the frame
-		setTitle("Main Menu");
+		setTitle("JPacman");
 		setSize(600, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -26,30 +22,39 @@ public class MainMenu extends JFrame {
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);
-		backgroundLabel.setLayout(new BorderLayout());
+
+		ImageIcon startIcon = new ImageIcon("src/main/resources/start_btn.png");
+		Image startImg = startIcon.getImage().getScaledInstance(100, 50, Image.SCALE_SMOOTH);
+		ImageIcon startBtn = new ImageIcon(startImg);
 		// Set up the button
-		startButton = new JButton("Start");
+		startButton = new JButton("");
+		startButton.setIcon(startBtn);
+		startButton.setOpaque(false);
+		startButton.setContentAreaFilled(false);
+		startButton.setBorderPainted(false);
+		startButton.setBorder(null);
 
 		startButton.addActionListener(e -> {
 			this.setVisible(false);
-			new Launcher().launch();
+			new MapSelector();
 		});
 
 		tutorialButton = new JButton("Tutorial");
 
 		// Set up the panel
-		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-		panel.add(startButton);
-		panel.add(tutorialButton);
+		// JPanel panel = new JPanel();
+		// panel.setOpaque(false);
+		// panel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+		// panel.add(startButton);
+		// panel.add(tutorialButton);
 
 		// add(panel, BorderLayout.CENTER);
 
 		// add(panel);
-		backgroundLabel.add(startButton);
-		startButton.setLocation(0, -100);
-		backgroundLabel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+
+		backgroundLabel.add(startButton, BorderLayout.CENTER);
+		startButton.setBounds(250, 300, 100, 200);
+		backgroundLabel.setLayout(null);
 		add(backgroundLabel, BorderLayout.CENTER);
 
 		setVisible(true);
