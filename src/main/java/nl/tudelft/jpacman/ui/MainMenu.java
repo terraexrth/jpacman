@@ -19,11 +19,11 @@ public class MainMenu extends JFrame {
 	public MainMenu() {
 		// Set up the frame
 		setTitle("Main Menu");
-		setSize(500, 500);
+		setSize(600, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ImageIcon backgroundImage = new ImageIcon("src/main/resources/pac_bg.jpg");
-		Image image = backgroundImage.getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH);
+		ImageIcon backgroundImage = new ImageIcon("src/main/resources/pac_bg.png");
+		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);
 		backgroundLabel.setLayout(new BorderLayout());
