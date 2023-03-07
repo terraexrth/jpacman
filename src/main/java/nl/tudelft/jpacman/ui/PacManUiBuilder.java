@@ -7,6 +7,8 @@ import java.util.Map;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
+import javax.swing.*;
+
 /**
  * Builder for the JPac-Man UI.
  *
@@ -27,6 +29,7 @@ public class PacManUiBuilder {
     /**
      * Map of buttons and their actions.
      */
+    private static final String EXIT_CAPTION = "Exit";
     private final Map<String, Action> buttons;
 
     /**
@@ -66,6 +69,7 @@ public class PacManUiBuilder {
         if (defaultButtons) {
             addStartButton(game);
             addStopButton(game);
+            addExitButton(game);
         }
         return new PacManUI(game, buttons, keyMappings, scoreFormatter);
     }
@@ -77,10 +81,19 @@ public class PacManUiBuilder {
      * @param game
      *            The game to stop.
      */
+
+    private void addExitButton(final Game game) {
+        assert game != null;
+
+        buttons.put(EXIT_CAPTION, game::exit);
+    }
+
     private void addStopButton(final Game game) {
         assert game != null;
 
         buttons.put(STOP_CAPTION, game::stop);
+
+
     }
 
     /**
