@@ -70,7 +70,7 @@ public class MapSelector extends JFrame {
 
 		map2Button.addActionListener(e -> {
 			this.setVisible(false);
-			new Launcher().launch();
+			new Launcher().launch_map2();
 		});
 
 		map3Button = new JButton("");
@@ -82,7 +82,7 @@ public class MapSelector extends JFrame {
 
 		map3Button.addActionListener(e -> {
 			this.setVisible(false);
-			new Launcher().launch();
+			new Launcher().launch_map3();
 		});
 
 		map4Button = new JButton("");
