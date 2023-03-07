@@ -67,6 +67,7 @@ public class PacManUI extends JFrame {
 	 * @param scoreFormatter
 	 *                       The formatter used to display the current score.
 	 */
+
 	public PacManUI(final Game game, final Map<String, Action> buttons,
 			final Map<Integer, Action> keyMappings,
 			ScoreFormatter scoreFormatter) {
@@ -105,6 +106,7 @@ public class PacManUI extends JFrame {
 	public void start() {
 		setSize(600, 800);
 		setVisible(true);
+        setResizable(false);
 		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 		service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
 	}
