@@ -160,7 +160,11 @@ public class Launcher {
 		builder.addKey(KeyEvent.VK_UP, moveTowardsDirection(Direction.NORTH))
 				.addKey(KeyEvent.VK_DOWN, moveTowardsDirection(Direction.SOUTH))
 				.addKey(KeyEvent.VK_LEFT, moveTowardsDirection(Direction.WEST))
-				.addKey(KeyEvent.VK_RIGHT, moveTowardsDirection(Direction.EAST));
+				.addKey(KeyEvent.VK_RIGHT, moveTowardsDirection(Direction.EAST))
+                .addKey(KeyEvent.VK_W, moveTowardsDirection(Direction.NORTH))
+                .addKey(KeyEvent.VK_S, moveTowardsDirection(Direction.SOUTH))
+                .addKey(KeyEvent.VK_A, moveTowardsDirection(Direction.WEST))
+                .addKey(KeyEvent.VK_D, moveTowardsDirection(Direction.EAST));
 	}
 
 	private Action moveTowardsDirection(Direction direction) {

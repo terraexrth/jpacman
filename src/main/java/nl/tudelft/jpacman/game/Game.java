@@ -8,6 +8,8 @@ import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 
+import javax.swing.*;
+
 /**
  * A basic implementation of a Pac-Man game.
  *
@@ -37,6 +39,7 @@ public abstract class Game implements LevelObserver {
      * @param pointCalculator
      *             The way to calculate points upon collisions.
      */
+
     protected Game(PointCalculator pointCalculator) {
         this.pointCalculator = pointCalculator;
         inProgress = false;
@@ -68,6 +71,13 @@ public abstract class Game implements LevelObserver {
             }
             inProgress = false;
             getLevel().stop();
+        }
+    }
+
+    public void exit() {
+        synchronized (progressLock) {
+
+            System.exit(0);
         }
     }
 
