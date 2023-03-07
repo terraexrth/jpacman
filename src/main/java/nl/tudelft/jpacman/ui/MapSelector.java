@@ -94,7 +94,7 @@ public class MapSelector extends JFrame {
 
 		map4Button.addActionListener(e -> {
 			this.setVisible(false);
-			new Launcher().launch();
+			new Launcher().launch_map4();
 		});
 
 		map5Button = new JButton("");
@@ -106,7 +106,7 @@ public class MapSelector extends JFrame {
 
 		map5Button.addActionListener(e -> {
 			this.setVisible(false);
-			new Launcher().launch();
+			new Launcher().launch_map5();
 		});
 
 		backgroundLabel.add(map1Button, BorderLayout.CENTER);
