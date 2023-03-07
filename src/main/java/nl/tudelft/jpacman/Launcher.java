@@ -86,6 +86,34 @@ public class Launcher {
 		return game;
 	}
 
+	public Game makeGame_2() {
+		GameFactory gf = getGameFactory();
+		Level level = makeLevel_2();
+		game = gf.createSinglePlayerGame(level, loadPointCalculator());
+		return game;
+	}
+
+	public Game makeGame_3() {
+		GameFactory gf = getGameFactory();
+		Level level = makeLevel_3();
+		game = gf.createSinglePlayerGame(level, loadPointCalculator());
+		return game;
+	}
+
+	public Game makeGame_4() {
+		GameFactory gf = getGameFactory();
+		Level level = makeLevel_4();
+		game = gf.createSinglePlayerGame(level, loadPointCalculator());
+		return game;
+	}
+
+	public Game makeGame_5() {
+		GameFactory gf = getGameFactory();
+		Level level = makeLevel_5();
+		game = gf.createSinglePlayerGame(level, loadPointCalculator());
+		return game;
+	}
+
 	private PointCalculator loadPointCalculator() {
 		return new PointCalculatorLoader().load();
 	}
@@ -110,7 +138,43 @@ public class Launcher {
 			return getMapParser().parseMap("/board1.txt");
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
-					"Unable to create level, name = " + getLevelMap(), e);
+					"Unable to create level, name = " + "/board1.txt", e);
+		}
+	}
+
+	public Level makeLevel_2() {
+		try {
+			return getMapParser().parseMap("/board2.txt");
+		} catch (IOException e) {
+			throw new PacmanConfigurationException(
+					"Unable to create level, name = " + "/board2.txt", e);
+		}
+	}
+
+	public Level makeLevel_3() {
+		try {
+			return getMapParser().parseMap("/board3.txt");
+		} catch (IOException e) {
+			throw new PacmanConfigurationException(
+					"Unable to create level, name = " + "/board3.txt", e);
+		}
+	}
+
+	public Level makeLevel_4() {
+		try {
+			return getMapParser().parseMap("/board4.txt");
+		} catch (IOException e) {
+			throw new PacmanConfigurationException(
+					"Unable to create level, name = " + "/board4.txt", e);
+		}
+	}
+
+	public Level makeLevel_5() {
+		try {
+			return getMapParser().parseMap("/board5.txt");
+		} catch (IOException e) {
+			throw new PacmanConfigurationException(
+					"Unable to create level, name = " + "/board5.txt", e);
 		}
 	}
 
@@ -177,10 +241,10 @@ public class Launcher {
 				.addKey(KeyEvent.VK_DOWN, moveTowardsDirection(Direction.SOUTH))
 				.addKey(KeyEvent.VK_LEFT, moveTowardsDirection(Direction.WEST))
 				.addKey(KeyEvent.VK_RIGHT, moveTowardsDirection(Direction.EAST))
-                .addKey(KeyEvent.VK_W, moveTowardsDirection(Direction.NORTH))
-                .addKey(KeyEvent.VK_S, moveTowardsDirection(Direction.SOUTH))
-                .addKey(KeyEvent.VK_A, moveTowardsDirection(Direction.WEST))
-                .addKey(KeyEvent.VK_D, moveTowardsDirection(Direction.EAST));
+				.addKey(KeyEvent.VK_W, moveTowardsDirection(Direction.NORTH))
+				.addKey(KeyEvent.VK_S, moveTowardsDirection(Direction.SOUTH))
+				.addKey(KeyEvent.VK_A, moveTowardsDirection(Direction.WEST))
+				.addKey(KeyEvent.VK_D, moveTowardsDirection(Direction.EAST));
 	}
 
 	private Action moveTowardsDirection(Direction direction) {
@@ -211,6 +275,38 @@ public class Launcher {
 
 	public void launch_map1() {
 		makeGame_1();
+		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+		addSinglePlayerKeys(builder);
+		pacManUI = builder.build(getGame());
+		pacManUI.start();
+	}
+
+	public void launch_map2() {
+		makeGame_2();
+		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+		addSinglePlayerKeys(builder);
+		pacManUI = builder.build(getGame());
+		pacManUI.start();
+	}
+
+	public void launch_map3() {
+		makeGame_3();
+		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+		addSinglePlayerKeys(builder);
+		pacManUI = builder.build(getGame());
+		pacManUI.start();
+	}
+
+	public void launch_map4() {
+		makeGame_4();
+		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+		addSinglePlayerKeys(builder);
+		pacManUI = builder.build(getGame());
+		pacManUI.start();
+	}
+
+	public void launch_map5() {
+		makeGame_5();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame());
