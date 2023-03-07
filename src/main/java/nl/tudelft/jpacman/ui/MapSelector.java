@@ -23,20 +23,21 @@ public class MapSelector extends JFrame {
 		setSize(600, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ImageIcon backgroundImage = new ImageIcon("src/main/resources/pac_bg.png");
+		ImageIcon backgroundImage = new ImageIcon("src/main/resources/selector_bg.png");
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);
 
 		select = new JButton("Select");
-
+		map1 = new JButton("");
+		
 		select.addActionListener(e -> {
 			this.setVisible(false);
 			new Launcher().launch();
 		});
 		backgroundLabel.add(select);
-
+		select.setBounds(getBounds());
 		add(backgroundLabel, BorderLayout.CENTER);
 		setVisible(true);
 	}

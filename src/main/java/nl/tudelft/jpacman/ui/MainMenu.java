@@ -24,8 +24,12 @@ public class MainMenu extends JFrame {
 		JLabel backgroundLabel = new JLabel(realImg);
 
 		ImageIcon startIcon = new ImageIcon("src/main/resources/start_btn.png");
-		Image startImg = startIcon.getImage().getScaledInstance(100, 50, Image.SCALE_SMOOTH);
+		Image startImg = startIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon startBtn = new ImageIcon(startImg);
+
+		ImageIcon tutorialIcon = new ImageIcon("src/main/resources/tutorial_btn.png");
+		Image turImg = tutorialIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+		ImageIcon tutorialBtn = new ImageIcon(turImg);
 		// Set up the button
 		startButton = new JButton("");
 		startButton.setIcon(startBtn);
@@ -39,8 +43,12 @@ public class MainMenu extends JFrame {
 			new MapSelector();
 		});
 
-		tutorialButton = new JButton("Tutorial");
-
+		tutorialButton = new JButton("");
+		tutorialButton.setIcon(tutorialBtn);
+		tutorialButton.setOpaque(false);
+		tutorialButton.setContentAreaFilled(false);
+		tutorialButton.setBorderPainted(false);
+		tutorialButton.setBorder(null);
 		// Set up the panel
 		// JPanel panel = new JPanel();
 		// panel.setOpaque(false);
@@ -53,7 +61,9 @@ public class MainMenu extends JFrame {
 		// add(panel);
 
 		backgroundLabel.add(startButton, BorderLayout.CENTER);
-		startButton.setBounds(250, 300, 100, 200);
+		backgroundLabel.add(tutorialButton, BorderLayout.CENTER);
+		startButton.setBounds(200, 220, 200, 50);
+		tutorialButton.setBounds(200, 290, 200, 50);
 		backgroundLabel.setLayout(null);
 		add(backgroundLabel, BorderLayout.CENTER);
 
