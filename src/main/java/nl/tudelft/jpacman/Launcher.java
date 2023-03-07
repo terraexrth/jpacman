@@ -79,6 +79,13 @@ public class Launcher {
 		return game;
 	}
 
+	public Game makeGame_1() {
+		GameFactory gf = getGameFactory();
+		Level level = makeLevel_1();
+		game = gf.createSinglePlayerGame(level, loadPointCalculator());
+		return game;
+	}
+
 	private PointCalculator loadPointCalculator() {
 		return new PointCalculatorLoader().load();
 	}
@@ -92,6 +99,15 @@ public class Launcher {
 	public Level makeLevel() {
 		try {
 			return getMapParser().parseMap(getLevelMap());
+		} catch (IOException e) {
+			throw new PacmanConfigurationException(
+					"Unable to create level, name = " + getLevelMap(), e);
+		}
+	}
+
+	public Level makeLevel_1() {
+		try {
+			return getMapParser().parseMap("/board1.txt");
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + getLevelMap(), e);
@@ -187,6 +203,14 @@ public class Launcher {
 	 */
 	public void launch() {
 		makeGame();
+		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+		addSinglePlayerKeys(builder);
+		pacManUI = builder.build(getGame());
+		pacManUI.start();
+	}
+
+	public void launch_map1() {
+		makeGame_1();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame());
