@@ -12,7 +12,7 @@ public class LeaderBorder extends JFrame{
         setTitle("JPacman");
         setSize(600, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setResizable(false);
         ImageIcon backgroundImage = new ImageIcon("src/main/resources/selector_bg.png");
         Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 
