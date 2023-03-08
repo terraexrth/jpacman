@@ -1,37 +1,53 @@
 package nl.tudelft.jpacman.ui;
 
-import nl.tudelft.jpacman.Launcher;
+import java.awt.BorderLayout;
+import java.awt.Image;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
-public class LeaderBorder extends JFrame{
-    private JButton select;
+public class LeaderBorder extends JFrame {
+	private JButton backButton;
 
-    public LeaderBorder() {
-        setTitle("JPacman");
-        setSize(600, 800);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        ImageIcon backgroundImage = new ImageIcon("src/main/resources/selector_bg.png");
-        Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
+	public LeaderBorder() {
+		setTitle("JPacman");
+		setSize(600, 800);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/pac_bg.png");
+		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 
-        ImageIcon realImg = new ImageIcon(image);
-        JLabel backgroundLabel = new JLabel(realImg);
+		ImageIcon realImg = new ImageIcon(image);
+		JLabel backgroundLabel = new JLabel(realImg);
+		backgroundLabel.setLayout(null);
 
-        select = new JButton("Select");
+		ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
+		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+		ImageIcon backBtn = new ImageIcon(backImg);
 
-        select.addActionListener(e -> {
-            this.setVisible(false);
-            new Launcher().launch();
-        });
-        backgroundLabel.add(select);
-        select.setBounds(getBounds());
-        add(backgroundLabel, BorderLayout.CENTER);
-        setVisible(true);
-    }
-    public static void main(String[] args) {
+		backButton = new JButton("Select");
 
-    }
+		backButton.addActionListener(e -> {
+			this.setVisible(false);
+			new MainMenu();
+		});
+
+		backButton.setIcon(backBtn);
+		backButton.setOpaque(false);
+		backButton.setContentAreaFilled(false);
+		backButton.setBorder(null);
+		backButton.setBorderPainted(false);
+
+		backgroundLabel.add(backButton);
+		backButton.setBounds(200, 500, 200, 50);
+		add(backgroundLabel, BorderLayout.CENTER);
+		setVisible(true);
+	}
+
+	public static void main(String[] args) {
+
+	}
 
 }
