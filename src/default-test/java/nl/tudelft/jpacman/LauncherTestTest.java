@@ -45,6 +45,7 @@ public class LauncherTestTest {
     @Test
     void GetAllPadletTest() throws InterruptedException {
         Game game = launcher.getGame();
+
         Player player = game.getPlayers().get(0);
         //GameEndTest
         game.start();
@@ -69,8 +70,125 @@ public class LauncherTestTest {
         Thread.sleep(1000);
     }
 
+
+
+
     private Direction getRandomDirection() {
         return Direction.values()[new Random().nextInt(Direction.values().length)];
     }
 
+
+    @Test
+    void TutorialTest() throws InterruptedException{
+        launcher = new Launcher();
+        launcher.withMapFile("/boardtutorialtest.txt");
+        launcher.launch();
+        Game game = launcher.getGame();
+
+        Player player = game.getPlayers().get(0);
+        //GameEndTest
+        game.start();
+        int total = game.getLevel().remainingPellets();
+        while(game.getLevel().remainingPellets() != 0){
+            game.move(player,getRandomDirection());
+        }
+        Thread.sleep(2000);
+        assertThat(player.getScore()).isEqualTo(total*10);
+        game.stop();
+    }
+
+    @Test
+    void Board1Test() throws InterruptedException{
+        launcher = new Launcher();
+        launcher.withMapFile("/board1test.txt");
+        launcher.launch();
+        Game game = launcher.getGame();
+
+        Player player = game.getPlayers().get(0);
+        //GameEndTest
+        game.start();
+        int total = game.getLevel().remainingPellets();
+        while(game.getLevel().remainingPellets() != 0){
+            game.move(player,getRandomDirection());
+        }
+        Thread.sleep(2000);
+        assertThat(player.getScore()).isEqualTo(total*10);
+        game.stop();
+    }
+
+    @Test
+    void Board2Test() throws InterruptedException{
+        launcher = new Launcher();
+        launcher.withMapFile("/board2test.txt");
+        launcher.launch();
+        Game game = launcher.getGame();
+
+        Player player = game.getPlayers().get(0);
+        //GameEndTest
+        game.start();
+        int total = game.getLevel().remainingPellets();
+        while(game.getLevel().remainingPellets() != 0){
+            game.move(player,getRandomDirection());
+        }
+        Thread.sleep(2000);
+        assertThat(player.getScore()).isEqualTo(total*10);
+        game.stop();
+    }
+
+    @Test
+    void Board3Test() throws InterruptedException{
+        launcher = new Launcher();
+        launcher.withMapFile("/board3test.txt");
+        launcher.launch();
+        Game game = launcher.getGame();
+
+        Player player = game.getPlayers().get(0);
+        //GameEndTest
+        game.start();
+        int total = game.getLevel().remainingPellets();
+        while(game.getLevel().remainingPellets() != 0){
+            game.move(player,getRandomDirection());
+        }
+        Thread.sleep(2000);
+        assertThat(player.getScore()).isEqualTo(total*10);
+        game.stop();
+    }
+
+    @Test
+    void Board4Test() throws InterruptedException{
+        launcher = new Launcher();
+        launcher.withMapFile("/board4test.txt");
+        launcher.launch();
+        Game game = launcher.getGame();
+
+        Player player = game.getPlayers().get(0);
+        //GameEndTest
+        game.start();
+        int total = game.getLevel().remainingPellets();
+        while(game.getLevel().remainingPellets() != 0){
+            game.move(player,getRandomDirection());
+        }
+        Thread.sleep(2000);
+        assertThat(player.getScore()).isEqualTo(total*10);
+        game.stop();
+    }
+
+    @Test
+    void Board5Test() throws InterruptedException{
+        launcher = new Launcher();
+        launcher.withMapFile("/board5test.txt");
+        launcher.launch();
+        Game game = launcher.getGame();
+
+        Player player = game.getPlayers().get(0);
+        //GameEndTest
+        game.start();
+        int total = game.getLevel().remainingPellets();
+        while(game.getLevel().remainingPellets() != 0){
+            game.move(player,getRandomDirection());
+        }
+        Thread.sleep(2000);
+        assertThat(player.getScore()).isEqualTo(total*10);
+        game.stop();
+    }
 }
