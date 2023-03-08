@@ -8,119 +8,118 @@ import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 
-import javax.swing.*;
-
 /**
  * A basic implementation of a Pac-Man game.
  *
- * @author Jeroen Roosen 
+ * @author Jeroen Roosen
  */
 public abstract class Game implements LevelObserver {
 
-    /**
-     * <code>true</code> if the game is in progress.
-     */
-    private boolean inProgress;
+	/**
+	 * <code>true</code> if the game is in progress.
+	 */
+	private boolean inProgress;
 
-    /**
-     * Object that locks the start and stop methods.
-     */
-    private final Object progressLock = new Object();
+	/**
+	 * Object that locks the start and stop methods.
+	 */
+	private final Object progressLock = new Object();
 
-    /**
-     * The algorithm used to calculate the points that
-     * they player gets whenever some action happens.
-     */
-    private PointCalculator pointCalculator;
+	/**
+	 * The algorithm used to calculate the points that
+	 * they player gets whenever some action happens.
+	 */
+	private PointCalculator pointCalculator;
 
-    /**
-     * Creates a new game.
-     *
-     * @param pointCalculator
-     *             The way to calculate points upon collisions.
-     */
+	/**
+	 * Creates a new game.
+	 *
+	 * @param pointCalculator
+	 *                        The way to calculate points upon collisions.
+	 */
 
-    protected Game(PointCalculator pointCalculator) {
-        this.pointCalculator = pointCalculator;
-        inProgress = false;
-    }
+	protected Game(PointCalculator pointCalculator) {
+		this.pointCalculator = pointCalculator;
+		inProgress = false;
+	}
 
-    /**
-     * Starts or resumes the game.
-     */
-    public void start() {
-        synchronized (progressLock) {
-            if (isInProgress()) {
-                return;
-            }
-            if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0) {
-                inProgress = true;
-                getLevel().addObserver(this);
-                getLevel().start();
-            }
-        }
-    }
+	/**
+	 * Starts or resumes the game.
+	 */
+	public void start() {
+		synchronized (progressLock) {
+			if (isInProgress()) {
+				return;
+			}
+			if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0) {
+				inProgress = true;
+				getLevel().addObserver(this);
+				getLevel().start();
+			}
+		}
+	}
 
-    /**
-     * Pauses the game.
-     */
-    public void stop() {
-        synchronized (progressLock) {
-            if (!isInProgress()) {
-                return;
-            }
-            inProgress = false;
-            getLevel().stop();
-        }
-    }
+	/**
+	 * Pauses the game.
+	 */
+	public void stop() {
+		synchronized (progressLock) {
+			if (!isInProgress()) {
+				return;
+			}
+			inProgress = false;
 
-    public void exit() {
-        synchronized (progressLock) {
+			getLevel().stop();
+		}
+	}
 
-            System.exit(0);
-        }
-    }
+	public void exit() {
+		synchronized (progressLock) {
 
-    /**
-     * @return <code>true</code> iff the game is started and in progress.
-     */
-    public boolean isInProgress() {
-        return inProgress;
-    }
+			System.exit(0);
+		}
+	}
 
-    /**
-     * @return An immutable list of the participants of this game.
-     */
-    public abstract List<Player> getPlayers();
+	/**
+	 * @return <code>true</code> iff the game is started and in progress.
+	 */
+	public boolean isInProgress() {
+		return inProgress;
+	}
 
-    /**
-     * @return The level currently being played.
-     */
-    public abstract Level getLevel();
+	/**
+	 * @return An immutable list of the participants of this game.
+	 */
+	public abstract List<Player> getPlayers();
 
-    /**
-     * Moves the specified player one square in the given direction.
-     *
-     * @param player
-     *            The player to move.
-     * @param direction
-     *            The direction to move in.
-     */
-    public void move(Player player, Direction direction) {
-        if (isInProgress()) {
-            // execute player move.
-            getLevel().move(player, direction);
-            pointCalculator.pacmanMoved(player, direction);
-        }
-    }
+	/**
+	 * @return The level currently being played.
+	 */
+	public abstract Level getLevel();
 
-    @Override
-    public void levelWon() {
-        stop();
-    }
+	/**
+	 * Moves the specified player one square in the given direction.
+	 *
+	 * @param player
+	 *                  The player to move.
+	 * @param direction
+	 *                  The direction to move in.
+	 */
+	public void move(Player player, Direction direction) {
+		if (isInProgress()) {
+			// execute player move.
+			getLevel().move(player, direction);
+			pointCalculator.pacmanMoved(player, direction);
+		}
+	}
 
-    @Override
-    public void levelLost() {
-        stop();
-    }
+	@Override
+	public void levelWon() {
+		stop();
+	}
+
+	@Override
+	public void levelLost() {
+		stop();
+	}
 }

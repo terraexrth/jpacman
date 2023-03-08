@@ -32,7 +32,7 @@ public class Launcher {
 
 	private static final PacManSprites SPRITE_STORE = new PacManSprites();
 
-	public static final String DEFAULT_MAP = "/board.txt";
+	public static final String DEFAULT_MAP = "/board1.txt";
 	private String levelMap = DEFAULT_MAP;
 
 	private PacManUI pacManUI;
@@ -114,6 +114,13 @@ public class Launcher {
 		return game;
 	}
 
+	public Game makeGame_t() {
+		GameFactory gf = getGameFactory();
+		Level level = makeLevel_t();
+		game = gf.createSinglePlayerGame(level, loadPointCalculator());
+		return game;
+	}
+
 	private PointCalculator loadPointCalculator() {
 		return new PointCalculatorLoader().load();
 	}
@@ -175,6 +182,15 @@ public class Launcher {
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + "/board5.txt", e);
+		}
+	}
+
+	public Level makeLevel_t() {
+		try {
+			return getMapParser().parseMap("/boardtutorial.txt");
+		} catch (IOException e) {
+			throw new PacmanConfigurationException(
+					"Unable to create level, name = " + "/boardtutorial.txt", e);
 		}
 	}
 
@@ -307,6 +323,14 @@ public class Launcher {
 
 	public void launch_map5() {
 		makeGame_5();
+		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+		addSinglePlayerKeys(builder);
+		pacManUI = builder.build(getGame());
+		pacManUI.start();
+	}
+
+	public void launch_tutorial() {
+		makeGame_t();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame());
