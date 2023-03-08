@@ -17,6 +17,8 @@ public class MapSelector extends JFrame {
 	private JButton map3Button;
 	private JButton map4Button;
 	private JButton map5Button;
+	private JButton backButton;
+
 
 	public MapSelector() {
 		setTitle("JPacman");
@@ -48,6 +50,10 @@ public class MapSelector extends JFrame {
 
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);
+
+		ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
+		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+		ImageIcon backBtn = new ImageIcon(backImg);
 
 		map1Button = new JButton("");
 		map1Button.setIcon(map1Btn);
@@ -109,17 +115,33 @@ public class MapSelector extends JFrame {
 			new Launcher().launch_map5();
 		});
 
+		backButton = new JButton("");
+		backButton.setIcon(backBtn);
+		backButton.setOpaque(false);
+		backButton.setContentAreaFilled(false);
+		backButton.setBorderPainted(false);
+		backButton.setBorder(null);
+
+		backButton.addActionListener(e -> {
+			this.setVisible(false);
+			new MainMenu();
+		});
+
+
 		backgroundLabel.add(map1Button, BorderLayout.CENTER);
 		backgroundLabel.add(map2Button, BorderLayout.CENTER);
 		backgroundLabel.add(map3Button, BorderLayout.CENTER);
 		backgroundLabel.add(map4Button, BorderLayout.CENTER);
 		backgroundLabel.add(map5Button, BorderLayout.CENTER);
+		backgroundLabel.add(backButton, BorderLayout.CENTER);
 
 		map1Button.setBounds(82, 181, 130, 200);
 		map2Button.setBounds(236, 181, 130, 200);
 		map3Button.setBounds(390, 181, 130, 200);
 		map4Button.setBounds(160, 404, 130, 200);
 		map5Button.setBounds(315, 404, 130, 200);
+		backButton.setBounds(200, 650, 200, 50);
+
 
 		add(backgroundLabel, BorderLayout.CENTER);
 
