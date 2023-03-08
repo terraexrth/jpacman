@@ -23,26 +23,26 @@ public class MapSelector extends JFrame {
 		setSize(600, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ImageIcon backgroundImage = new ImageIcon("src/main/resources/selector_bg.png");
+		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/selector_bg.png");
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 
-		ImageIcon map1Icon = new ImageIcon("src/main/resources/confirm_btn.png");
+		ImageIcon map1Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
 		Image map1Img = map1Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon map1Btn = new ImageIcon(map1Img);
 
-		ImageIcon map2Icon = new ImageIcon("src/main/resources/confirm_btn.png");
+		ImageIcon map2Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
 		Image map2Img = map2Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon map2Btn = new ImageIcon(map2Img);
 
-		ImageIcon map3Icon = new ImageIcon("src/main/resources/confirm_btn.png");
+		ImageIcon map3Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
 		Image map3Img = map3Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon map3Btn = new ImageIcon(map3Img);
 
-		ImageIcon map4Icon = new ImageIcon("src/main/resources/confirm_btn.png");
+		ImageIcon map4Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
 		Image map4Img = map4Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon map4Btn = new ImageIcon(map4Img);
 
-		ImageIcon map5Icon = new ImageIcon("src/main/resources/confirm_btn.png");
+		ImageIcon map5Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
 		Image map5Img = map5Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon map5Btn = new ImageIcon(map5Img);
 

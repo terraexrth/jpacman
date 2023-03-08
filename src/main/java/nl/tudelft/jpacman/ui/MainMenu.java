@@ -20,24 +20,24 @@ public class MainMenu extends JFrame {
 		setSize(600, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ImageIcon backgroundImage = new ImageIcon("src/main/resources/pac_bg.png");
+		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/pac_bg.png");
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);
 
-		ImageIcon startIcon = new ImageIcon("src/main/resources/start_btn.png");
+		ImageIcon startIcon = new ImageIcon("src/main/resources/button/start_btn.png");
 		Image startImg = startIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon startBtn = new ImageIcon(startImg);
 
-		ImageIcon tutorialIcon = new ImageIcon("src/main/resources/tutorial_btn.png");
+		ImageIcon tutorialIcon = new ImageIcon("src/main/resources/button/tutorial_btn.png");
 		Image turImg = tutorialIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon tutorialBtn = new ImageIcon(turImg);
 
-		ImageIcon leaderIcon = new ImageIcon("src/main/resources/leaderboard_btn.png");
+		ImageIcon leaderIcon = new ImageIcon("src/main/resources/button/leaderboard_btn.png");
 		Image leaderImg = leaderIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon leaderBtn = new ImageIcon(leaderImg);
 
-		ImageIcon exitIcon = new ImageIcon("src/main/resources/exit_btn.png");
+		ImageIcon exitIcon = new ImageIcon("src/main/resources/button/exit_btn.png");
 		Image exitImg = exitIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon exitBtn = new ImageIcon(exitImg);
 
