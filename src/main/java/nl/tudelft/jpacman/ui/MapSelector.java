@@ -26,24 +26,24 @@ public class MapSelector extends JFrame {
 		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/selector_bg.png");
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 
-		ImageIcon map1Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
-		Image map1Img = map1Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+		ImageIcon map1Icon = new ImageIcon("src/main/resources/map/map_1.png");
+		Image map1Img = map1Icon.getImage().getScaledInstance(130, 200, Image.SCALE_SMOOTH);
 		ImageIcon map1Btn = new ImageIcon(map1Img);
 
-		ImageIcon map2Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
-		Image map2Img = map2Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+		ImageIcon map2Icon = new ImageIcon("src/main/resources/map/map_2.png");
+		Image map2Img = map2Icon.getImage().getScaledInstance(130, 200, Image.SCALE_SMOOTH);
 		ImageIcon map2Btn = new ImageIcon(map2Img);
 
-		ImageIcon map3Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
-		Image map3Img = map3Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+		ImageIcon map3Icon = new ImageIcon("src/main/resources/map/map_3.png");
+		Image map3Img = map3Icon.getImage().getScaledInstance(130, 200, Image.SCALE_SMOOTH);
 		ImageIcon map3Btn = new ImageIcon(map3Img);
 
-		ImageIcon map4Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
-		Image map4Img = map4Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+		ImageIcon map4Icon = new ImageIcon("src/main/resources/map/map_4.png");
+		Image map4Img = map4Icon.getImage().getScaledInstance(130, 200, Image.SCALE_SMOOTH);
 		ImageIcon map4Btn = new ImageIcon(map4Img);
 
-		ImageIcon map5Icon = new ImageIcon("src/main/resources/button/confirm_btn.png");
-		Image map5Img = map5Icon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+		ImageIcon map5Icon = new ImageIcon("src/main/resources/map/map_5.png");
+		Image map5Img = map5Icon.getImage().getScaledInstance(130, 200, Image.SCALE_SMOOTH);
 		ImageIcon map5Btn = new ImageIcon(map5Img);
 
 		ImageIcon realImg = new ImageIcon(image);
@@ -115,11 +115,11 @@ public class MapSelector extends JFrame {
 		backgroundLabel.add(map4Button, BorderLayout.CENTER);
 		backgroundLabel.add(map5Button, BorderLayout.CENTER);
 
-		map1Button.setBounds(200, 250, 200, 50);
-		map2Button.setBounds(200, 320, 200, 50);
-		map3Button.setBounds(200, 390, 200, 50);
-		map4Button.setBounds(200, 460, 200, 50);
-		map5Button.setBounds(200, 530, 200, 50);
+		map1Button.setBounds(82, 181, 130, 200);
+		map2Button.setBounds(236, 181, 130, 200);
+		map3Button.setBounds(390, 181, 130, 200);
+		map4Button.setBounds(160, 404, 130, 200);
+		map5Button.setBounds(315, 404, 130, 200);
 
 		add(backgroundLabel, BorderLayout.CENTER);
 
