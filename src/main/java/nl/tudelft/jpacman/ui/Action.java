@@ -11,4 +11,5 @@ public interface Action {
      * Executes the action.
      */
     void doAction();
+
 }

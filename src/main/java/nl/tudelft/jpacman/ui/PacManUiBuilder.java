@@ -84,6 +84,7 @@ public class PacManUiBuilder {
 		assert game != null;
 
 		buttons.put(EXIT_CAPTION, game::exit);
+
 	}
 
 	private void addStopButton(final Game game) {

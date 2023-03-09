@@ -1,15 +1,12 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
@@ -51,7 +48,7 @@ public class PacManUI extends JFrame {
 	 */
 	private final BoardPanel boardPanel;
 
-	/**
+    /**
 	 * Creates a new UI for a JPacman game.
 	 *
 	 * @param game
@@ -81,23 +78,24 @@ public class PacManUI extends JFrame {
 		PacKeyListener keys = new PacKeyListener(keyMappings);
 		addKeyListener(keys);
 
-		JPanel buttonPanel = new ButtonPanel(buttons, this);
+		//JPanel buttonPanel = new BoardPanel(buttons, this);;
 
 		scorePanel = new ScorePanel(game.getPlayers());
 		if (scoreFormatter != null) {
 			scorePanel.setScoreFormatter(scoreFormatter);
 		}
 
-		boardPanel = new BoardPanel(game);
+        boardPanel = new BoardPanel(game,buttons, this);
 
 		Container contentPanel = getContentPane();
 		contentPanel.setLayout(new BorderLayout());
-		contentPanel.add(buttonPanel, BorderLayout.SOUTH);
+		//contentPanel.add(buttonPanel, BorderLayout.SOUTH);
 		contentPanel.add(scorePanel, BorderLayout.NORTH);
 		contentPanel.add(boardPanel, BorderLayout.CENTER);
+        //lp.add(BoardPanel.game,new Integer(3));
 
 		pack();
-	}
+    }
 
 	/**
 	 * Starts the "engine", the thread that redraws the interface at set
@@ -106,7 +104,7 @@ public class PacManUI extends JFrame {
 	public void start() {
 		setSize(600, 800);
 		setVisible(true);
-        setResizable(false);
+        setResizable(true);
 		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 		service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
 	}

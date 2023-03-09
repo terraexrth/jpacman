@@ -89,6 +89,7 @@ public class MainMenu extends JFrame {
 		exitButton.setContentAreaFilled(false);
 		exitButton.setBorderPainted(false);
 		exitButton.setBorder(null);
+
 		exitButton.addActionListener(e -> {
 			this.dispose();
 		});
