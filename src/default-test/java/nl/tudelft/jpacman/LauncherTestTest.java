@@ -16,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LauncherTestTest {
     private Launcher launcher;
-    private MainMenu mainmenu;
 
     /**
      * Launch the user interface.
@@ -27,6 +26,7 @@ public class LauncherTestTest {
         launcher = new Launcher();
         launcher.withMapFile("/boardtest.txt");
         launcher.launch();
+        //mainmenu.openMap();
     }
 
     /**
@@ -74,6 +74,12 @@ public class LauncherTestTest {
         Thread.sleep(2000);
         assertThat(player.getScore()).isEqualTo(total*10);
         game.stop();
+    }
+
+    @Test
+    void MainmenuStartTest() throws InterruptedException{
+
+        Thread.sleep(1000);
     }
 
     private Direction getRandomDirection() {

@@ -14,6 +14,24 @@ public class MainMenu extends JFrame {
 	private JButton leaderButton;
 	private JButton exitButton;
 
+    public void openMap()
+    {
+        this.setVisible(false);
+        new MapSelector();
+    }
+
+    public  void openTutorial(){
+        this.setVisible(false);
+        new Tutorial();
+    }
+
+    public void openLeaderBorder(){
+        this.setVisible(false);
+        new LeaderBorder();
+    }
+
+
+
 	public MainMenu() {
 		// Set up the frame
 		setTitle("JPacman");
@@ -55,8 +73,7 @@ public class MainMenu extends JFrame {
 		startButton.setBorder(null);
 
 		startButton.addActionListener(e -> {
-			this.setVisible(false);
-			new MapSelector();
+		    openMap();
 		});
 
 		tutorialButton = new JButton("");
@@ -67,8 +84,7 @@ public class MainMenu extends JFrame {
 		tutorialButton.setBorder(null);
 
 		tutorialButton.addActionListener(e -> {
-			this.setVisible(false);
-			new Tutorial();
+			openTutorial();
 		});
 
 		leaderButton = new JButton("");
@@ -79,8 +95,7 @@ public class MainMenu extends JFrame {
 		leaderButton.setBorder(null);
 
 		leaderButton.addActionListener(e -> {
-			this.setVisible(false);
-			new LeaderBorder();
+			openLeaderBorder();
 		});
 
 		exitButton = new JButton("");

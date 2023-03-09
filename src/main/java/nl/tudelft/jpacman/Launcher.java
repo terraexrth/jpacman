@@ -28,7 +28,8 @@ import nl.tudelft.jpacman.ui.PacManUiBuilder;
  * @author Jeroen Roosen
  */
 @SuppressWarnings("PMD.TooManyMethods")
-public class Launcher {
+public class
+Launcher {
 
 	private static final PacManSprites SPRITE_STORE = new PacManSprites();
 
