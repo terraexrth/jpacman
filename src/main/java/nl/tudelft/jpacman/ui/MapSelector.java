@@ -145,7 +145,7 @@ public class MapSelector extends JFrame {
 
 		add(backgroundLabel, BorderLayout.CENTER);
 
-		setVisible(true);
+
 	}
 
 	public static void main(String[] args) {

@@ -63,7 +63,7 @@ public class Tutorial extends JFrame {
 		backButton.setBounds(80, 670, 200, 50);
 
 		add(backgroundLabel, BorderLayout.CENTER);
-		setVisible(true);
+
 	}
 
 	public static void main(String[] args) {

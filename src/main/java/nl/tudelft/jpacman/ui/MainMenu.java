@@ -14,25 +14,56 @@ public class MainMenu extends JFrame {
 	private JButton leaderButton;
 	private JButton exitButton;
 
-    public void openMap()
-    {
-        this.setVisible(false);
-        new MapSelector();
+    private MapSelector mapSelector;
+    private Tutorial tutorialSelector;
+
+    private LeaderBorder leaderBorderSelector;
+
+    public void openMap() {
+        mapSelector = new MapSelector();
+        mapSelector.setVisible(true);
     }
 
-    public  void openTutorial(){
-        this.setVisible(false);
-        new Tutorial();
+    public void openTutorial() {
+        tutorialSelector = new Tutorial();
+        tutorialSelector.setVisible(true);
     }
 
-    public void openLeaderBorder(){
-        this.setVisible(false);
-        new LeaderBorder();
+    public void openLeaderBorder() {
+        leaderBorderSelector = new LeaderBorder();
+        leaderBorderSelector.setVisible(true);
+    }
+
+    public JButton getStartButton() {
+        return startButton;
+    }
+
+    public JButton getTutorialButton() {
+        return tutorialButton;
+    }
+
+    public JButton getLeaderButton() {
+        return leaderButton;
+    }
+
+    public JButton getExitButton() {
+        return exitButton;
+    }
+
+    public MapSelector getMapSelector() {
+        return mapSelector;
+    }
+
+    public Tutorial getTutorialSelector() {
+        return tutorialSelector;
+    }
+
+    public LeaderBorder getLeaderBorderSelector() {
+        return leaderBorderSelector;
     }
 
 
-
-	public MainMenu() {
+    public MainMenu() {
 		// Set up the frame
 		setTitle("JPacman");
 		setSize(600, 800);
@@ -73,6 +104,7 @@ public class MainMenu extends JFrame {
 		startButton.setBorder(null);
 
 		startButton.addActionListener(e -> {
+            this.setVisible(false);
 		    openMap();
 		});
 
@@ -84,6 +116,7 @@ public class MainMenu extends JFrame {
 		tutorialButton.setBorder(null);
 
 		tutorialButton.addActionListener(e -> {
+            this.setVisible(false);
 			openTutorial();
 		});
 
@@ -95,6 +128,7 @@ public class MainMenu extends JFrame {
 		leaderButton.setBorder(null);
 
 		leaderButton.addActionListener(e -> {
+            this.setVisible(false);
 			openLeaderBorder();
 		});
 
@@ -135,4 +169,5 @@ public class MainMenu extends JFrame {
 	public static void main(String[] args) {
 		new MainMenu();
 	}
+
 }

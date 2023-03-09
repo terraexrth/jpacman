@@ -43,7 +43,7 @@ public class LeaderBorder extends JFrame {
 		backgroundLabel.add(backButton);
 		backButton.setBounds(200, 500, 200, 50);
 		add(backgroundLabel, BorderLayout.CENTER);
-		setVisible(true);
+
 	}
 
 	public static void main(String[] args) {
