@@ -24,7 +24,7 @@ public class LauncherTestTest {
     void setUpPacman() {
         //mainmenu = new MainMenu();
         launcher = new Launcher();
-        launcher.withMapFile("/boardtest.txt");
+        launcher.withMapFile("/board1test.txt");
         launcher.launch();
         //mainmenu.openMap();
     }
