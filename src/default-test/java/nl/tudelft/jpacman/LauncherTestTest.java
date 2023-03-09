@@ -1,11 +1,13 @@
 package nl.tudelft.jpacman;
 
+import jdk.jfr.Description;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.ui.MainMenu;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
@@ -42,6 +44,22 @@ public class LauncherTestTest {
      *
      * @throws InterruptedException Since we're sleeping in this test.
      */
+
+    @DisplayName("T01 : Game Should Start")
+    @Test
+    void GameStartTest() throws InterruptedException{
+        Game game = launcher.getGame();
+        Player player = game.getPlayers().get(0);
+        // start cleanly.
+        assertThat(game.isInProgress()).isFalse();
+        game.start();
+        assertThat(game.isInProgress()).isTrue();
+        assertThat(player.getScore()).isZero();
+        Thread.sleep(1000);
+    }
+
+
+    @DisplayName("T02 : Packman should eat all padlet (Padlet remaining = 0)")
     @Test
     void GetAllPadletTest() throws InterruptedException {
         Game game = launcher.getGame();
@@ -58,26 +76,12 @@ public class LauncherTestTest {
         game.stop();
     }
 
-    @Test
-    void GameStartTest() throws InterruptedException{
-        Game game = launcher.getGame();
-        Player player = game.getPlayers().get(0);
-        // start cleanly.
-        assertThat(game.isInProgress()).isFalse();
-        game.start();
-        assertThat(game.isInProgress()).isTrue();
-        assertThat(player.getScore()).isZero();
-        Thread.sleep(1000);
-    }
-
-
-
-
     private Direction getRandomDirection() {
         return Direction.values()[new Random().nextInt(Direction.values().length)];
     }
 
 
+    @DisplayName("T03 : Tutorial")
     @Test
     void TutorialTest() throws InterruptedException{
         launcher = new Launcher();
