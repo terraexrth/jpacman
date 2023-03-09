@@ -49,7 +49,7 @@ public class MainMenuTest {
     }
 
     @Test
-    @DisplayName("T04: Clicking the leader button should open leaderboard page")
+    @DisplayName("T04: Clicking the leader button should open leaderboard pages")
     void testLeaderButton() {
         JButton leaderButton = mainMenu.getLeaderButton();
         leaderButton.doClick();
