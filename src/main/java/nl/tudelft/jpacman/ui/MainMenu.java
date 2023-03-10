@@ -14,56 +14,55 @@ public class MainMenu extends JFrame {
 	private JButton leaderButton;
 	private JButton exitButton;
 
-    private MapSelector mapSelector;
-    private Tutorial tutorialSelector;
+	private MapSelector mapSelector;
+	private Tutorial tutorialSelector;
 
-    private LeaderBorder leaderBorderSelector;
+	private LeaderBorder leaderBorderSelector;
 
-    public void openMap() {
-        mapSelector = new MapSelector();
-        mapSelector.setVisible(true);
-    }
+	public void openMap() {
+		mapSelector = new MapSelector();
+		mapSelector.setVisible(true);
+	}
 
-    public void openTutorial() {
-        tutorialSelector = new Tutorial();
-        tutorialSelector.setVisible(true);
-    }
+	public void openTutorial() {
+		tutorialSelector = new Tutorial();
+		tutorialSelector.setVisible(true);
+	}
 
-    public void openLeaderBorder() {
-        leaderBorderSelector = new LeaderBorder();
-        leaderBorderSelector.setVisible(true);
-    }
+	public void openLeaderBorder() {
+		leaderBorderSelector = new LeaderBorder();
+		leaderBorderSelector.setVisible(true);
+	}
 
-    public JButton getStartButton() {
-        return startButton;
-    }
+	public JButton getStartButton() {
+		return startButton;
+	}
 
-    public JButton getTutorialButton() {
-        return tutorialButton;
-    }
+	public JButton getTutorialButton() {
+		return tutorialButton;
+	}
 
-    public JButton getLeaderButton() {
-        return leaderButton;
-    }
+	public JButton getLeaderButton() {
+		return leaderButton;
+	}
 
-    public JButton getExitButton() {
-        return exitButton;
-    }
+	public JButton getExitButton() {
+		return exitButton;
+	}
 
-    public MapSelector getMapSelector() {
-        return mapSelector;
-    }
+	public MapSelector getMapSelector() {
+		return mapSelector;
+	}
 
-    public Tutorial getTutorialSelector() {
-        return tutorialSelector;
-    }
+	public Tutorial getTutorialSelector() {
+		return tutorialSelector;
+	}
 
-    public LeaderBorder getLeaderBorderSelector() {
-        return leaderBorderSelector;
-    }
+	public LeaderBorder getLeaderBorderSelector() {
+		return leaderBorderSelector;
+	}
 
-
-    public MainMenu() {
+	public MainMenu() {
 		// Set up the frame
 		setTitle("JPacman");
 		setSize(600, 800);
@@ -104,8 +103,8 @@ public class MainMenu extends JFrame {
 		startButton.setBorder(null);
 
 		startButton.addActionListener(e -> {
-            this.setVisible(false);
-		    openMap();
+			this.setVisible(false);
+			openMap();
 		});
 
 		tutorialButton = new JButton("");
@@ -116,7 +115,7 @@ public class MainMenu extends JFrame {
 		tutorialButton.setBorder(null);
 
 		tutorialButton.addActionListener(e -> {
-            this.setVisible(false);
+			this.setVisible(false);
 			openTutorial();
 		});
 
@@ -128,9 +127,11 @@ public class MainMenu extends JFrame {
 		leaderButton.setBorder(null);
 
 		leaderButton.addActionListener(e -> {
-            this.setVisible(false);
+			this.setVisible(false);
 			openLeaderBorder();
 		});
+
+		leaderButton.setVisible(false);
 
 		exitButton = new JButton("");
 		exitButton.setIcon(exitBtn);
@@ -159,7 +160,7 @@ public class MainMenu extends JFrame {
 		startButton.setBounds(200, 220, 200, 50);
 		tutorialButton.setBounds(200, 290, 200, 50);
 		leaderButton.setBounds(200, 360, 200, 50);
-		exitButton.setBounds(200, 430, 200, 50);
+		exitButton.setBounds(200, 360, 200, 50);
 		backgroundLabel.setLayout(null);
 		add(backgroundLabel, BorderLayout.CENTER);
 
