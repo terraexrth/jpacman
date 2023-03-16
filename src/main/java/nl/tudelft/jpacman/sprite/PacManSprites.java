@@ -120,6 +120,12 @@ public class PacManSprites extends SpriteStore {
 			return loadSprite("/sprite/wall_forest.png");
 		} else if (level == 2) {
 			return loadSprite("/sprite/wall_snow.png");
+		} else if (level == 3) {
+			return loadSprite("/sprite/wall_candy.png");
+		} else if (level == 4) {
+			return loadSprite("/sprite/wall_candy.png");
+		} else if (level == 5) {
+			return loadSprite("/sprite/wall_candy.png");
 		} else {
 			return loadSprite("/sprite/wall.png");
 		}
@@ -134,6 +140,12 @@ public class PacManSprites extends SpriteStore {
 			return loadSprite("/sprite/floor_forest.png");
 		} else if (level == 2) {
 			return loadSprite("/sprite/floor_snow.png");
+		} else if (level == 3) {
+			return loadSprite("/sprite/floor_candy.png");
+		} else if (level == 4) {
+			return loadSprite("/sprite/floor_candy.png");
+		} else if (level == 5) {
+			return loadSprite("/sprite/floor_candy.png");
 		} else {
 			return loadSprite("/sprite/floor.png");
 		}
