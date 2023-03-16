@@ -66,6 +66,7 @@ public class MainMenu extends JFrame {
 		// Set up the frame
 		setTitle("JPacman");
 		setSize(600, 800);
+        setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 

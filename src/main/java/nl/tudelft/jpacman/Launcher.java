@@ -28,12 +28,11 @@ import nl.tudelft.jpacman.ui.PacManUiBuilder;
  * @author Jeroen Roosen
  */
 @SuppressWarnings("PMD.TooManyMethods")
-public class
-Launcher {
+public class Launcher {
 
 	private static final PacManSprites SPRITE_STORE = new PacManSprites();
 
-	public static final String DEFAULT_MAP = "/board1.txt";
+	public static final String DEFAULT_MAP = "/board2.txt";
 	private String levelMap = DEFAULT_MAP;
 
 	private static PacManUI pacManUI;
@@ -134,7 +133,7 @@ Launcher {
 	 */
 	public Level makeLevel() {
 		try {
-			return getMapParser().parseMap(getLevelMap());
+			return getMapParser(0).parseMap(getLevelMap());
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + getLevelMap(), e);
@@ -143,7 +142,7 @@ Launcher {
 
 	public Level makeLevel_1() {
 		try {
-			return getMapParser().parseMap("/board1.txt");
+			return getMapParser(1).parseMap("/board1.txt");
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + "/board1.txt", e);
@@ -152,7 +151,7 @@ Launcher {
 
 	public Level makeLevel_2() {
 		try {
-			return getMapParser().parseMap("/board2.txt");
+			return getMapParser(2).parseMap("/board2.txt");
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + "/board2.txt", e);
@@ -161,7 +160,7 @@ Launcher {
 
 	public Level makeLevel_3() {
 		try {
-			return getMapParser().parseMap("/board3.txt");
+			return getMapParser(3).parseMap("/board3.txt");
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + "/board3.txt", e);
@@ -170,7 +169,7 @@ Launcher {
 
 	public Level makeLevel_4() {
 		try {
-			return getMapParser().parseMap("/board4.txt");
+			return getMapParser(4).parseMap("/board4.txt");
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + "/board4.txt", e);
@@ -179,7 +178,7 @@ Launcher {
 
 	public Level makeLevel_5() {
 		try {
-			return getMapParser().parseMap("/board5.txt");
+			return getMapParser(5).parseMap("/board5.txt");
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + "/board5.txt", e);
@@ -188,7 +187,7 @@ Launcher {
 
 	public Level makeLevel_t() {
 		try {
-			return getMapParser().parseMap("/boardtutorial.txt");
+			return getMapParser(6).parseMap("/boardtutorial.txt");
 		} catch (IOException e) {
 			throw new PacmanConfigurationException(
 					"Unable to create level, name = " + "/boardtutorial.txt", e);
@@ -199,8 +198,10 @@ Launcher {
 	 * @return A new map parser object using the factories from
 	 *         {@link #getLevelFactory()} and {@link #getBoardFactory()}.
 	 */
-	protected MapParser getMapParser() {
-		return new MapParser(getLevelFactory(), getBoardFactory());
+	protected MapParser getMapParser(int level) {
+		MapParser getmap = new MapParser(getLevelFactory(), getBoardFactory());
+		getmap.setLevel(level);
+		return getmap;
 	}
 
 	/**
