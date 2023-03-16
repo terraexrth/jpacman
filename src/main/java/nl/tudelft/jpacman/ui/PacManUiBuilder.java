@@ -28,6 +28,7 @@ public class PacManUiBuilder {
 	 * Map of buttons and their actions.
 	 */
 	private static final String EXIT_CAPTION = "Exit";
+    private static final String BACK_CAPTION = "Back";
 	private final Map<String, Action> buttons;
 
 	/**
@@ -67,6 +68,7 @@ public class PacManUiBuilder {
 		if (defaultButtons) {
 			addStartButton(game);
 			addStopButton(game);
+            addBackButton(game);
 			addExitButton(game);
 		}
 		return new PacManUI(game, buttons, keyMappings, scoreFormatter);
@@ -92,6 +94,12 @@ public class PacManUiBuilder {
 		buttons.put(STOP_CAPTION, game::stop);
 
 	}
+    private void addBackButton(final Game game) {
+        assert game != null;
+
+        buttons.put(BACK_CAPTION, game::back);
+
+    }
 
 	/**
 	 * Adds a button with the caption {@value #START_CAPTION} that starts the

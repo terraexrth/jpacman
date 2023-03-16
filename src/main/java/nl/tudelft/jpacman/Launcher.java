@@ -36,7 +36,7 @@ Launcher {
 	public static final String DEFAULT_MAP = "/board1.txt";
 	private String levelMap = DEFAULT_MAP;
 
-	private PacManUI pacManUI;
+	private static PacManUI pacManUI;
 	private Game game;
 
 	/**
@@ -344,7 +344,7 @@ Launcher {
 	 *
 	 * Precondition: The game was launched first.
 	 */
-	public void dispose() {
+	public static void dispose() {
 		assert pacManUI != null;
 		pacManUI.dispose();
 	}

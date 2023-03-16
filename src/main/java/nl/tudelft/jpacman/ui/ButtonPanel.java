@@ -41,11 +41,18 @@ class ButtonPanel extends JPanel {
 		Image pauseImg = pauseIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
 		ImageIcon pauseBtn = new ImageIcon(pauseImg);
 
+        ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
+        Image backImg = backIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
+        ImageIcon backBtn = new ImageIcon(backImg);
+
 		ImageIcon exitIcon = new ImageIcon("src/main/resources/button/exit_btn.png");
 		Image exitImg = exitIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
 		ImageIcon exitBtn = new ImageIcon(exitImg);
 
-		for (final String caption : buttons.keySet()) {
+
+
+
+        for (final String caption : buttons.keySet()) {
 			JButton button = new JButton(caption);
 			button.addActionListener(e -> {
 				buttons.get(caption).doAction();
@@ -56,9 +63,11 @@ class ButtonPanel extends JPanel {
 
 			} else if (button.getText().equals("Stop")) {
 				button.setIcon(pauseBtn);
+            } else if (button.getText().equals("Back")) {
+                button.setIcon(backBtn);
 			} else if (button.getText().equals("Exit")) {
-				button.setIcon(exitBtn);
-			}
+                button.setIcon(exitBtn);
+            }
 			button.setOpaque(false);
 			button.setBorder(null);
 			button.setBorderPainted(false);
