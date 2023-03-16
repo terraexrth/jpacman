@@ -23,6 +23,7 @@ public class MapSelector extends JFrame {
 	public MapSelector() {
 		setTitle("JPacman");
 		setSize(600, 800);
+        setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/selector_bg.png");
