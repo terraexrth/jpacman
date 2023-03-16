@@ -66,9 +66,9 @@ public class MainMenu extends JFrame {
 		// Set up the frame
 		setTitle("JPacman");
 		setSize(600, 800);
-        setResizable(false);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+		setResizable(false);
 
 		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/pac_bg.png");
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
@@ -95,6 +95,7 @@ public class MainMenu extends JFrame {
 		Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
 		setIconImage(iconImg);
+		this.setLocationRelativeTo(null);
 
 		// Set up the button
 		startButton = new JButton("");

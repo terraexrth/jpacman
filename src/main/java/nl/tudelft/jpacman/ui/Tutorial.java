@@ -18,9 +18,9 @@ public class Tutorial extends JFrame {
 	public Tutorial() {
 		setTitle("JPacman");
 		setSize(600, 800);
-        setResizable(false);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+		setResizable(false);
 
 		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/tutorial_ep_bg.png");
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
@@ -34,6 +34,8 @@ public class Tutorial extends JFrame {
 		ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
 		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon backBtn = new ImageIcon(backImg);
+
+		this.setLocationRelativeTo(null);
 
 		continueButton = new JButton("");
 		continueButton.setIcon(continueBtn);

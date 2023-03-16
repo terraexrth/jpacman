@@ -51,18 +51,40 @@ public class PacManSprites extends SpriteStore {
 	 */
 	private static final int ANIMATION_DELAY = 200;
 
+	public int level;
+
 	/**
 	 * @return A map of animated Pac-Man sprites for all directions.
 	 */
 	public Map<Direction, Sprite> getPacmanSprites() {
-		return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
+		if (this.level == 1) {
+			return directionSprite("/sprite/forest/pacman_forest.png", PACMAN_ANIMATION_FRAMES);
+		} else if (this.level == 3) {
+			return directionSprite("/sprite/desert/pacman_desert.png", PACMAN_ANIMATION_FRAMES);
+		} else if (this.level == 4) {
+			return directionSprite("/sprite/water/pacman_water.png", PACMAN_ANIMATION_FRAMES);
+		} else {
+			return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
+		}
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	/**
 	 * @return The animation of a dying Pac-Man.
 	 */
 	public AnimatedSprite getPacManDeathAnimation() {
-		String resource = "/sprite/dead.png";
+		String resource = null;
+
+		if (level == 1) {
+			resource = "/sprite/forest/dead_forest.png";
+		} else if (level == 3) {
+			resource = "/sprite/desert/dead_desert.png";
+		} else {
+			resource = "/sprite/dead.png";
+		}
 
 		Sprite baseImage = loadSprite(resource);
 		AnimatedSprite animation = createAnimatedSprite(baseImage, PACMAN_DEATH_FRAMES,
@@ -104,12 +126,28 @@ public class PacManSprites extends SpriteStore {
 	 *              The colour of the ghost.
 	 * @return The Sprite for the ghost.
 	 */
-	public Map<Direction, Sprite> getGhostSprite(GhostColor color) {
+	public Map<Direction, Sprite> getGhostSprite(GhostColor color, int level) {
 		assert color != null;
+		String resource = null;
+		if (level == 1) {
+			setLevel(level);
+			resource = "/sprite/forest/ghost_" + color.name().toLowerCase() + "_forest"
+					+ ".png";
+		} else if (level == 3) {
+			setLevel(level);
+			resource = "/sprite/desert/ghost_" + color.name().toLowerCase() + "_desert"
+					+ ".png";
+		} else if (level == 4) {
+			setLevel(level);
+			resource = "/sprite/water/ghost_" + color.name().toLowerCase() + "_water"
+					+ ".png";
+		} else {
+			resource = "/sprite/ghost_" + color.name().toLowerCase()
+					+ ".png";
 
-		String resource = "/sprite/ghost_" + color.name().toLowerCase()
-				+ ".png";
+		}
 		return directionSprite(resource, GHOST_ANIMATION_FRAMES);
+
 	}
 
 	/**
@@ -121,11 +159,11 @@ public class PacManSprites extends SpriteStore {
 		} else if (level == 2) {
 			return loadSprite("/sprite/wall_snow.png");
 		} else if (level == 3) {
-			return loadSprite("/sprite/wall_candy.png");
+			return loadSprite("/sprite/wall_desert.png");
 		} else if (level == 4) {
-			return loadSprite("/sprite/wall_candy.png");
+			return loadSprite("/sprite/wall_water.png");
 		} else if (level == 5) {
-			return loadSprite("/sprite/wall_candy.png");
+			return loadSprite("/sprite/wall_water.png");
 		} else {
 			return loadSprite("/sprite/wall.png");
 		}
@@ -137,13 +175,13 @@ public class PacManSprites extends SpriteStore {
 	 */
 	public Sprite getGroundSprite(int level) {
 		if (level == 1) {
-			return loadSprite("/sprite/floor_forest.png");
+			return loadSprite("/sprite/floor.png");
 		} else if (level == 2) {
 			return loadSprite("/sprite/floor_snow.png");
 		} else if (level == 3) {
-			return loadSprite("/sprite/floor_candy.png");
+			return loadSprite("/sprite/floor_desert.png");
 		} else if (level == 4) {
-			return loadSprite("/sprite/floor_candy.png");
+			return loadSprite("/sprite/floor_water.png");
 		} else if (level == 5) {
 			return loadSprite("/sprite/floor_candy.png");
 		} else {

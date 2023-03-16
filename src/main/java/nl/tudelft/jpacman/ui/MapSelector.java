@@ -19,13 +19,12 @@ public class MapSelector extends JFrame {
 	private JButton map5Button;
 	private JButton backButton;
 
-
 	public MapSelector() {
 		setTitle("JPacman");
 		setSize(600, 800);
-        setResizable(false);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+		setResizable(false);
 
 		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/selector_bg.png");
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
@@ -56,6 +55,8 @@ public class MapSelector extends JFrame {
 		ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
 		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon backBtn = new ImageIcon(backImg);
+
+		this.setLocationRelativeTo(null);
 
 		map1Button = new JButton("");
 		map1Button.setIcon(map1Btn);
@@ -129,7 +130,6 @@ public class MapSelector extends JFrame {
 			new MainMenu();
 		});
 
-
 		backgroundLabel.add(map1Button, BorderLayout.CENTER);
 		backgroundLabel.add(map2Button, BorderLayout.CENTER);
 		backgroundLabel.add(map3Button, BorderLayout.CENTER);
@@ -144,9 +144,7 @@ public class MapSelector extends JFrame {
 		map5Button.setBounds(315, 404, 130, 200);
 		backButton.setBounds(200, 650, 200, 50);
 
-
 		add(backgroundLabel, BorderLayout.CENTER);
-
 
 	}
 
