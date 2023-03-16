@@ -12,6 +12,7 @@ import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.ui.MainMenu;
 import nl.tudelft.jpacman.ui.MapSelector;
 import nl.tudelft.jpacman.ui.PacManUI;
+import nl.tudelft.jpacman.ui.PacManUiBuilder;
 
 import javax.swing.*;
 
@@ -36,7 +37,7 @@ public abstract class Game implements LevelObserver {
 	 * The algorithm used to calculate the points that
 	 * they player gets whenever some action happens.
 	 */
-	private PointCalculator pointCalculator;
+	private final PointCalculator pointCalculator;
 
 	/**
 	 * Creates a new game.
@@ -75,17 +76,19 @@ public abstract class Game implements LevelObserver {
 				return;
 			}
 			inProgress = false;
-
 			getLevel().stop();
 		}
 	}
 
 	public void exit() {
 		synchronized (progressLock) {
-
 			System.exit(0);
 		}
 	}
+    public void retry(){
+        PacManUI.getOwnerlessWindows();
+    }
+
 
     public void back(){
         {
