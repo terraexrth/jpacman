@@ -94,6 +94,7 @@ public class PacManUI extends JFrame {
 		contentPanel.setLayout(new BorderLayout());
 		contentPanel.add(buttonPanel, BorderLayout.SOUTH);
 		contentPanel.add(scorePanel, BorderLayout.NORTH);
+
 		contentPanel.add(boardPanel, BorderLayout.CENTER);
 
 		pack();
@@ -106,9 +107,11 @@ public class PacManUI extends JFrame {
 	public void start() {
 		setSize(600, 800);
 		setVisible(true);
-        setResizable(false);
+		this.setLocationRelativeTo(null);
+		setResizable(false);
 		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 		service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
+
 	}
 
 	/**

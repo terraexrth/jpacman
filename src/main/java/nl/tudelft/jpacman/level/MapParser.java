@@ -127,7 +127,7 @@ public class MapParser {
 				levelCreator.createPellet().occupy(pelletSquare);
 				break;
 			case 'G':
-				Square ghostSquare = makeGhostSquare(ghosts, levelCreator.createGhost());
+				Square ghostSquare = makeGhostSquare(ghosts, levelCreator.createGhost(this.level));
 				grid[x][y] = ghostSquare;
 				break;
 			case 'P':
