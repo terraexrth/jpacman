@@ -3,7 +3,9 @@ package nl.tudelft.jpacman.ui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import nl.tudelft.jpacman.board.Board;
@@ -40,14 +42,22 @@ class BoardPanel extends JPanel {
 	 */
 	private final Game game;
 
+	public int level;
+
 	/**
 	 * Creates a new board panel that will display the provided game.
 	 *
 	 * @param game
 	 *             The game to display.
 	 */
-	BoardPanel(Game game) {
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	BoardPanel(Game game, int input) {
 		super();
+		setLevel(level);
 		assert game != null;
 		this.game = game;
 
@@ -59,6 +69,7 @@ class BoardPanel extends JPanel {
 		Dimension size = new Dimension(w, h);
 		setMinimumSize(size);
 		setPreferredSize(size);
+		setLevel(input);
 	}
 
 	@Override
@@ -77,12 +88,28 @@ class BoardPanel extends JPanel {
 	 * @param window
 	 *                 The dimensions to scale the rendered board to.
 	 */
+
+	ImageIcon Map1Floor = new ImageIcon("src/main/resources/mapbg/map1.jpg");
+	Image map1 = Map1Floor.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
+	ImageIcon RealMap1 = new ImageIcon(map1);
+
+	ImageIcon Map2Floor = new ImageIcon("src/main/resources/bg/pac_bg.png");
+	Image map2 = Map2Floor.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
+	ImageIcon RealMap2 = new ImageIcon(map2);
+
 	private void render(Board board, Graphics graphics, Dimension window) {
 		int cellW = window.width / board.getWidth();
 		int cellH = window.height / board.getHeight();
 
-		graphics.setColor(BACKGROUND_COLOR);
 		graphics.fillRect(0, 0, window.width, window.height);
+
+		if (level == 1) {
+			graphics.drawImage(RealMap1.getImage(), 0, 0, this);
+		} else if (level == 2) {
+			graphics.drawImage(RealMap2.getImage(), 0, 0, this);
+		} else if (level == 0) {
+			graphics.drawImage(RealMap1.getImage(), 0, 0, this);
+		}
 
 		for (int y = 0; y < board.getHeight(); y++) {
 			for (int x = 0; x < board.getWidth(); x++) {
@@ -111,8 +138,11 @@ class BoardPanel extends JPanel {
 	 * @param height
 	 *                 The height of this square (in pixels.)
 	 */
+
 	private void render(Square square, Graphics graphics, int x, int y, int width, int height) {
+
 		square.getSprite().draw(graphics, x, y, width, height);
+
 		for (Unit unit : square.getOccupants()) {
 			unit.getSprite().draw(graphics, x, y, width, height);
 		}

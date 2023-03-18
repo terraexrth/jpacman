@@ -296,6 +296,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame());
+		pacManUI.setLevel(1);
 		pacManUI.start();
 	}
 
@@ -304,6 +305,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame());
+		pacManUI.setLevel(2);
 		pacManUI.start();
 	}
 
@@ -312,6 +314,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame());
+
 		pacManUI.start();
 	}
 
@@ -320,7 +323,9 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame());
+
 		pacManUI.start();
+
 	}
 
 	public void launch_map5() {
@@ -328,6 +333,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame());
+
 		pacManUI.start();
 	}
 
