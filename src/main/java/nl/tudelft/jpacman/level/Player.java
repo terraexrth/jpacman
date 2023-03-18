@@ -109,9 +109,7 @@ public class Player extends Unit {
     public int getScore() {
         return score;
     }
-    public void setScore(int a) {
-        this.score = 0;
-    }
+
 
     @Override
     public Sprite getSprite() {
