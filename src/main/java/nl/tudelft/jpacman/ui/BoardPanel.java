@@ -42,8 +42,6 @@ class BoardPanel extends JPanel {
 	 */
 	private final Game game;
 
-	public int level;
-
 	/**
 	 * Creates a new board panel that will display the provided game.
 	 *
@@ -51,13 +49,22 @@ class BoardPanel extends JPanel {
 	 *             The game to display.
 	 */
 
+	public int level;
+
 	public void setLevel(int level) {
 		this.level = level;
+		System.out.println("BoardPanel Setter Level : " + this.level);
+	}
+
+	public int getLevel() {
+		System.out.println("BoardPanel Getter Level : " + this.level);
+		return this.level;
+
 	}
 
 	BoardPanel(Game game, int input) {
 		super();
-		setLevel(level);
+
 		assert game != null;
 		this.game = game;
 
@@ -70,6 +77,7 @@ class BoardPanel extends JPanel {
 		setMinimumSize(size);
 		setPreferredSize(size);
 		setLevel(input);
+		getLevel();
 	}
 
 	@Override

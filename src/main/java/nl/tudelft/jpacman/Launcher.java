@@ -283,11 +283,12 @@ public class Launcher {
 	/**
 	 * Creates and starts a JPac-Man game.
 	 */
+
 	public void launch() {
 		makeGame();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
-		pacManUI = builder.build(getGame());
+		pacManUI = builder.build(getGame(), 0);
 		pacManUI.start();
 	}
 
@@ -295,8 +296,8 @@ public class Launcher {
 		makeGame_1();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
-		pacManUI = builder.build(getGame());
-		pacManUI.setLevel(1);
+		pacManUI = builder.build(getGame(), 1);
+
 		pacManUI.start();
 	}
 
@@ -304,8 +305,8 @@ public class Launcher {
 		makeGame_2();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
-		pacManUI = builder.build(getGame());
-		pacManUI.setLevel(2);
+		pacManUI = builder.build(getGame(), 2);
+
 		pacManUI.start();
 	}
 
@@ -313,7 +314,7 @@ public class Launcher {
 		makeGame_3();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
-		pacManUI = builder.build(getGame());
+		pacManUI = builder.build(getGame(), 3);
 
 		pacManUI.start();
 	}
@@ -322,7 +323,7 @@ public class Launcher {
 		makeGame_4();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
-		pacManUI = builder.build(getGame());
+		pacManUI = builder.build(getGame(), 4);
 
 		pacManUI.start();
 
@@ -332,7 +333,7 @@ public class Launcher {
 		makeGame_5();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
-		pacManUI = builder.build(getGame());
+		pacManUI = builder.build(getGame(), 5);
 
 		pacManUI.start();
 	}
@@ -341,7 +342,7 @@ public class Launcher {
 		makeGame_t();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
-		pacManUI = builder.build(getGame());
+		pacManUI = builder.build(getGame(), 6);
 		pacManUI.start();
 	}
 

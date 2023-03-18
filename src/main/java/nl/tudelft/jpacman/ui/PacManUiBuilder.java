@@ -28,7 +28,7 @@ public class PacManUiBuilder {
 	 * Map of buttons and their actions.
 	 */
 	private static final String EXIT_CAPTION = "Exit";
-    private static final String BACK_CAPTION = "Back";
+	private static final String BACK_CAPTION = "Back";
 	private final Map<String, Action> buttons;
 
 	/**
@@ -49,6 +49,9 @@ public class PacManUiBuilder {
 	/**
 	 * Creates a new Pac-Man UI builder without any mapped keys or buttons.
 	 */
+
+	public int level;
+
 	public PacManUiBuilder() {
 		this.defaultButtons = false;
 		this.buttons = new LinkedHashMap<>();
@@ -62,16 +65,16 @@ public class PacManUiBuilder {
 	 *             The game to build the UI for.
 	 * @return A new Pac-Man UI with the set keys and buttons.
 	 */
-	public PacManUI build(final Game game) {
+	public PacManUI build(final Game game, int level) {
 		assert game != null;
 
 		if (defaultButtons) {
 			addStartButton(game);
 			addStopButton(game);
-            addBackButton(game);
+			addBackButton(game);
 			addExitButton(game);
 		}
-		return new PacManUI(game, buttons, keyMappings, scoreFormatter);
+		return new PacManUI(game, buttons, keyMappings, scoreFormatter, level);
 	}
 
 	/**
@@ -94,12 +97,13 @@ public class PacManUiBuilder {
 		buttons.put(STOP_CAPTION, game::stop);
 
 	}
-    private void addBackButton(final Game game) {
-        assert game != null;
 
-        buttons.put(BACK_CAPTION, game::back);
+	private void addBackButton(final Game game) {
+		assert game != null;
 
-    }
+		buttons.put(BACK_CAPTION, game::back);
+
+	}
 
 	/**
 	 * Adds a button with the caption {@value #START_CAPTION} that starts the
