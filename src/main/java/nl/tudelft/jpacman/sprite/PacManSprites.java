@@ -201,8 +201,21 @@ public class PacManSprites extends SpriteStore {
 	/**
 	 * @return The sprite for the
 	 */
-	public Sprite getPelletSprite() {
-		return loadSprite("/sprite/pellet.png");
+	public Sprite getPelletSprite(int level) {
+		if (level == 1) {
+			return loadSprite("/sprite/pellet1.png");
+		} else if (level == 2) {
+			return loadSprite("/sprite/pellet2.png");
+		} else if (level == 3) {
+			return loadSprite("/sprite/pellet3.png");
+		} else if (level == 4) {
+			return loadSprite("/sprite/pellet4.png");
+		} else if (level == 5) {
+			return loadSprite("/sprite/pellet5.png");
+		} else {
+			return loadSprite("/sprite/pellet.png");
+		}
+
 	}
 
 	/**
