@@ -97,13 +97,25 @@ class BoardPanel extends JPanel {
 	 *                 The dimensions to scale the rendered board to.
 	 */
 
-	ImageIcon Map1Floor = new ImageIcon("src/main/resources/mapbg/map1.jpg");
+	ImageIcon Map1Floor = new ImageIcon("src/main/resources/mapbg/map1.png");
 	Image map1 = Map1Floor.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 	ImageIcon RealMap1 = new ImageIcon(map1);
 
-	ImageIcon Map2Floor = new ImageIcon("src/main/resources/bg/pac_bg.png");
+	ImageIcon Map2Floor = new ImageIcon("src/main/resources/mapbg/map2.png");
 	Image map2 = Map2Floor.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 	ImageIcon RealMap2 = new ImageIcon(map2);
+
+	ImageIcon Map3Floor = new ImageIcon("src/main/resources/mapbg/map3.png");
+	Image map3 = Map3Floor.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
+	ImageIcon RealMap3 = new ImageIcon(map3);
+
+	ImageIcon Map4Floor = new ImageIcon("src/main/resources/mapbg/map4.png");
+	Image map4 = Map4Floor.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
+	ImageIcon RealMap4 = new ImageIcon(map4);
+
+	ImageIcon Map5Floor = new ImageIcon("src/main/resources/mapbg/map5.png");
+	Image map5 = Map5Floor.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
+	ImageIcon RealMap5 = new ImageIcon(map5);
 
 	private void render(Board board, Graphics graphics, Dimension window) {
 		int cellW = window.width / board.getWidth();
@@ -115,8 +127,12 @@ class BoardPanel extends JPanel {
 			graphics.drawImage(RealMap1.getImage(), 0, 0, this);
 		} else if (level == 2) {
 			graphics.drawImage(RealMap2.getImage(), 0, 0, this);
-		} else if (level == 0) {
-			graphics.drawImage(RealMap1.getImage(), 0, 0, this);
+		} else if (level == 3) {
+			graphics.drawImage(RealMap3.getImage(), 0, 0, this);
+		}else if (level == 4) {
+			graphics.drawImage(RealMap4.getImage(), 0, 0, this);
+		}else if (level == 5) {
+			graphics.drawImage(RealMap5.getImage(), 0, 0, this);
 		}
 
 		for (int y = 0; y < board.getHeight(); y++) {

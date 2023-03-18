@@ -181,7 +181,7 @@ public class PacManSprites extends SpriteStore {
 		} else if (level == 4) {
 			return loadSprite("/sprite/wall_water.png");
 		} else if (level == 5) {
-			return loadSprite("/sprite/wall_water.png");
+			return loadSprite("/sprite/wall_candy.png");
 		} else {
 			return loadSprite("/sprite/wall.png");
 		}
@@ -192,20 +192,10 @@ public class PacManSprites extends SpriteStore {
 	 * @return The sprite for the ground.
 	 */
 	public Sprite getGroundSprite(int level) {
-		if (level == 1) {
-			return loadSprite("/sprite/floor.png");
-		} else if (level == 2) {
-			return loadSprite("/sprite/floor.png");
-		} else if (level == 3) {
-			return loadSprite("/sprite/floor_desert.png");
-		} else if (level == 4) {
-			return loadSprite("/sprite/floor_water.png");
-		} else if (level == 5) {
-			return loadSprite("/sprite/floor.png");
-		} else {
+		if (level != 0) {
 			return loadSprite("/sprite/floor.png");
 		}
-
+		return loadSprite("/sprite/floor.png");
 	}
 
 	/**
