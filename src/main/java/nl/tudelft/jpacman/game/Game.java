@@ -30,6 +30,16 @@ public abstract class Game implements LevelObserver {
     private Player player;
     private Level level;
 
+
+
+    private long totaltime;
+    public long getTotaltime() {
+        return totaltime;
+    }
+
+    public void setTotaltime(long totaltime) {
+        this.totaltime = totaltime;
+    }
 	/**
 	 * Object that locks the start and stop methods.
 	 */
@@ -66,6 +76,8 @@ public abstract class Game implements LevelObserver {
 				getLevel().addObserver(this);
 				getLevel().start();
 			}
+            Stopwatch.start();
+            Stopwatch.getElapsedTimeSecs();
 		}
 	}
 
@@ -80,6 +92,9 @@ public abstract class Game implements LevelObserver {
 			}
 			inProgress = false;
 			getLevel().stop();
+            Stopwatch.stop();
+            setTotaltime(getTotaltime() + Stopwatch.getElapsedTimeSecs());
+            System.out.println(getTotaltime());
 		}
 	}
 
