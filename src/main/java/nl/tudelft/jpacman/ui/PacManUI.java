@@ -68,6 +68,18 @@ public class PacManUI extends JFrame {
 	 *                       The formatter used to display the current score.
 	 */
 
+	public int level;
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+
+		this.level = level;
+		System.out.println(this.level);
+	}
+
 	public PacManUI(final Game game, final Map<String, Action> buttons,
 			final Map<Integer, Action> keyMappings,
 			ScoreFormatter scoreFormatter) {
@@ -88,13 +100,12 @@ public class PacManUI extends JFrame {
 			scorePanel.setScoreFormatter(scoreFormatter);
 		}
 
-		boardPanel = new BoardPanel(game);
+		boardPanel = new BoardPanel(game, getLevel());
 
 		Container contentPanel = getContentPane();
 		contentPanel.setLayout(new BorderLayout());
 		contentPanel.add(buttonPanel, BorderLayout.SOUTH);
 		contentPanel.add(scorePanel, BorderLayout.NORTH);
-
 		contentPanel.add(boardPanel, BorderLayout.CENTER);
 
 		pack();

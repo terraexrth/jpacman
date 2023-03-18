@@ -59,17 +59,15 @@ public class PacManSprites extends SpriteStore {
 	public Map<Direction, Sprite> getPacmanSprites() {
 		if (this.level == 1) {
 			return directionSprite("/sprite/forest/pacman_forest.png", PACMAN_ANIMATION_FRAMES);
-		}else if (this.level == 2) {
+		} else if (this.level == 2) {
 			return directionSprite("/sprite/snow/pacman_snow.png", PACMAN_ANIMATION_FRAMES);
-		}
-		 else if (this.level == 3) {
+		} else if (this.level == 3) {
 			return directionSprite("/sprite/desert/pacman_desert.png", PACMAN_ANIMATION_FRAMES);
 		} else if (this.level == 4) {
 			return directionSprite("/sprite/water/pacman_water.png", PACMAN_ANIMATION_FRAMES);
-		}else if (this.level == 5) {
+		} else if (this.level == 5) {
 			return directionSprite("/sprite/candy/pacman_candy.png", PACMAN_ANIMATION_FRAMES);
-		}
-		 else {
+		} else {
 			return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
 		}
 	}
@@ -86,17 +84,15 @@ public class PacManSprites extends SpriteStore {
 
 		if (level == 1) {
 			resource = "/sprite/forest/dead_forest.png";
-		}else if (level == 2) {
+		} else if (level == 2) {
 			resource = "/sprite/snow/dead_snow.png";
-		}
-		 else if (level == 3) {
+		} else if (level == 3) {
 			resource = "/sprite/desert/dead_desert.png";
-		}else if (level == 4) {
+		} else if (level == 4) {
 			resource = "/sprite/water/dead_water.png";
-		}else if (level == 5) {
+		} else if (level == 5) {
 			resource = "/sprite/candy/dead_candy.png";
-		}
-		 else {
+		} else {
 			resource = "/sprite/dead.png";
 		}
 
@@ -147,12 +143,11 @@ public class PacManSprites extends SpriteStore {
 			setLevel(level);
 			resource = "/sprite/forest/ghost_" + color.name().toLowerCase() + "_forest"
 					+ ".png";
-		}else if (level == 2) {
+		} else if (level == 2) {
 			setLevel(level);
 			resource = "/sprite/snow/ghost_" + color.name().toLowerCase() + "_snow"
 					+ ".png";
-		}
-		 else if (level == 3) {
+		} else if (level == 3) {
 			setLevel(level);
 			resource = "/sprite/desert/ghost_" + color.name().toLowerCase() + "_desert"
 					+ ".png";
@@ -160,12 +155,11 @@ public class PacManSprites extends SpriteStore {
 			setLevel(level);
 			resource = "/sprite/water/ghost_" + color.name().toLowerCase() + "_water"
 					+ ".png";
-		}else if (level == 5) {
+		} else if (level == 5) {
 			setLevel(level);
 			resource = "/sprite/candy/ghost_" + color.name().toLowerCase() + "_candy"
 					+ ".png";
-		}
-		 else {
+		} else {
 			resource = "/sprite/ghost_" + color.name().toLowerCase()
 					+ ".png";
 
@@ -201,13 +195,13 @@ public class PacManSprites extends SpriteStore {
 		if (level == 1) {
 			return loadSprite("/sprite/floor.png");
 		} else if (level == 2) {
-			return loadSprite("/sprite/floor_snow.png");
+			return loadSprite("/sprite/floor.png");
 		} else if (level == 3) {
 			return loadSprite("/sprite/floor_desert.png");
 		} else if (level == 4) {
 			return loadSprite("/sprite/floor_water.png");
 		} else if (level == 5) {
-			return loadSprite("/sprite/floor_snow.png");
+			return loadSprite("/sprite/floor.png");
 		} else {
 			return loadSprite("/sprite/floor.png");
 		}
