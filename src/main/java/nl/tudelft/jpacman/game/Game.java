@@ -1,8 +1,10 @@
 package nl.tudelft.jpacman.game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nl.tudelft.jpacman.Launcher;
+import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
@@ -24,6 +26,9 @@ public abstract class Game implements LevelObserver {
 	 */
 	private boolean inProgress;
 	private PacManUI pacManUI;
+    private Player player;
+    private Level level;
+
 	/**
 	 * Object that locks the start and stop methods.
 	 */
@@ -83,22 +88,42 @@ public abstract class Game implements LevelObserver {
 		}
 	}
     public void retry(){
-        PacManUI.getOwnerlessWindows();
+        if (GE!=null){
+            GE.setVisible(false);
+            GE=null;
+        }
+        player.setScore(0);
+
+        player.setAlive(true);
+        List<Level> levels_ = new ArrayList<>();
+        for (int i = 1; i < 5+1; i++) {
+            String _INDEX_MAP_ = String.valueOf(i);
+            levels_.add(makeLevel(_INDEX_MAP_));
+
+        }
+
+        levelNumber = 0;
+        player.setMap(1);
+        levels.clear();
+        levels.addAll(levels_);
+        level = levels.get(0);
+        level.registerPlayer(player);
+        inProgress = false;
+        getLevel().addObserver(this);
+        getLevel().stop();
     }
 
 
-	public void back() {
+    public void back() {
 		{
 			Launcher.dispose();
 			new MapSelector().setVisible(true);
 		}
 	}
 
-	private void dispose() {
-	}
 
-	private void setVisible(boolean b) {
-	}
+
+
 
 	/**
 	 * @return <code>true</code> iff the game is started and in progress.
