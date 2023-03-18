@@ -69,7 +69,7 @@ public class PacManUiBuilder {
 		assert game != null;
 
 		if (defaultButtons) {
-			addStartButton(game);
+
 			addStopButton(game);
 			addBackButton(game);
 			addExitButton(game);
@@ -162,8 +162,12 @@ public class PacManUiBuilder {
 	 */
 	public PacManUiBuilder withDefaultButtons() {
 		defaultButtons = true;
-		buttons.put(START_CAPTION, null);
+
 		buttons.put(STOP_CAPTION, null);
+		buttons.put(START_CAPTION, null);
+		buttons.put(BACK_CAPTION, null);
+		buttons.put(EXIT_CAPTION, null);
+
 		return this;
 	}
 

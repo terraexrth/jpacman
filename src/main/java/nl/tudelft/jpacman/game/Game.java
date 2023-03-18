@@ -1,15 +1,19 @@
 package nl.tudelft.jpacman.game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nl.tudelft.jpacman.Launcher;
+import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
+import nl.tudelft.jpacman.level.MapParser;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.ui.MapSelector;
 import nl.tudelft.jpacman.ui.PacManUI;
+import nl.tudelft.jpacman.ui.PacManUiBuilder;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -23,6 +27,9 @@ public abstract class Game implements LevelObserver {
 	 */
 	private boolean inProgress;
 	private PacManUI pacManUI;
+    private Player player;
+    private Level level;
+
 	/**
 	 * Object that locks the start and stop methods.
 	 */
@@ -32,7 +39,7 @@ public abstract class Game implements LevelObserver {
 	 * The algorithm used to calculate the points that
 	 * they player gets whenever some action happens.
 	 */
-	private PointCalculator pointCalculator;
+	private final PointCalculator pointCalculator;
 
 	/**
 	 * Creates a new game.
@@ -72,30 +79,31 @@ public abstract class Game implements LevelObserver {
 				return;
 			}
 			inProgress = false;
-
 			getLevel().stop();
 		}
 	}
 
 	public void exit() {
 		synchronized (progressLock) {
-
 			System.exit(0);
 		}
 	}
+    public void retry(){
 
-	public void back() {
+
+    }
+
+
+    public void back() {
 		{
 			Launcher.dispose();
 			new MapSelector().setVisible(true);
 		}
 	}
 
-	private void dispose() {
-	}
 
-	private void setVisible(boolean b) {
-	}
+
+
 
 	/**
 	 * @return <code>true</code> iff the game is started and in progress.

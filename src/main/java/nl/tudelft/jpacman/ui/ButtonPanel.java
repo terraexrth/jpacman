@@ -45,11 +45,13 @@ class ButtonPanel extends JPanel {
         Image backImg = backIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
         ImageIcon backBtn = new ImageIcon(backImg);
 
+        ImageIcon retryIcon = new ImageIcon("src/main/resources/button/retry_btn.png");
+        Image retryImg = retryIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
+        ImageIcon retryBtn = new ImageIcon(retryImg);
+
 		ImageIcon exitIcon = new ImageIcon("src/main/resources/button/exit_btn.png");
 		Image exitImg = exitIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
 		ImageIcon exitBtn = new ImageIcon(exitImg);
-
-
 
 
         for (final String caption : buttons.keySet()) {
@@ -60,12 +62,16 @@ class ButtonPanel extends JPanel {
 			});
 			if (button.getText().equals("Start")) {
 				button.setIcon(startBtn);
-
 			} else if (button.getText().equals("Stop")) {
 				button.setIcon(pauseBtn);
-            } else if (button.getText().equals("Back")) {
+            }
+            else if (button.getText().equals("Retry")) {
+                button.setIcon(retryBtn);
+            }
+            else if (button.getText().equals("Back")) {
                 button.setIcon(backBtn);
-			} else if (button.getText().equals("Exit")) {
+            }
+            else if (button.getText().equals("Exit")) {
                 button.setIcon(exitBtn);
             }
 			button.setOpaque(false);

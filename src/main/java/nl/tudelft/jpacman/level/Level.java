@@ -312,6 +312,8 @@ public class Level {
         return pellets;
     }
 
+
+
     /**
      * A task that moves an NPC and reschedules itself after it finished.
      *

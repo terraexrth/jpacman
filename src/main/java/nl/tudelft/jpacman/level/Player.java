@@ -110,6 +110,7 @@ public class Player extends Unit {
         return score;
     }
 
+
     @Override
     public Sprite getSprite() {
         if (isAlive()) {
@@ -129,3 +130,4 @@ public class Player extends Unit {
         score += points;
     }
 }
+
