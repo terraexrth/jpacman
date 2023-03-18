@@ -89,10 +89,28 @@ public abstract class Game implements LevelObserver {
 		}
 	}
     public void retry(){
-
+        if (pacManUI!=null){
+            Launcher.setVisible(false);
+        }
+        Launcher.dispose();
+        Launcher.setVisible(false);
+        if  (Launcher.getMap() == 1){
+            new Launcher().launch_map1();
+        }
+        else if  (Launcher.getMap() == 2){
+            new Launcher().launch_map2();
+        }
+        else if  (Launcher.getMap() == 3){
+            new Launcher().launch_map3();
+        }
+        else if  (Launcher.getMap() == 4){
+            new Launcher().launch_map4();
+        }
+        else if  (Launcher.getMap() == 5){
+            new Launcher().launch_map5();
+        }
 
     }
-
 
     public void back() {
 		{
@@ -100,10 +118,6 @@ public abstract class Game implements LevelObserver {
 			new MapSelector().setVisible(true);
 		}
 	}
-
-
-
-
 
 	/**
 	 * @return <code>true</code> iff the game is started and in progress.

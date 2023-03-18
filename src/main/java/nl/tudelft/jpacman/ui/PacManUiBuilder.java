@@ -29,6 +29,7 @@ public class PacManUiBuilder {
 	 */
 	private static final String EXIT_CAPTION = "Exit";
 	private static final String BACK_CAPTION = "Back";
+    private static final String RETRY_CAPTION = "Retry";
 	private final Map<String, Action> buttons;
 
 	/**
@@ -69,8 +70,9 @@ public class PacManUiBuilder {
 		assert game != null;
 
 		if (defaultButtons) {
-			addStartButton(game);
+            addRetryButton(game);
 			addStopButton(game);
+            addStartButton(game);
 			addBackButton(game);
 			addExitButton(game);
 		}
@@ -104,6 +106,11 @@ public class PacManUiBuilder {
 		buttons.put(BACK_CAPTION, game::back);
 
 	}
+    private void addRetryButton(final Game game) {
+        assert game != null;
+
+        buttons.put(RETRY_CAPTION, game::retry);
+    }
 
 	/**
 	 * Adds a button with the caption {@value #START_CAPTION} that starts the
@@ -162,7 +169,7 @@ public class PacManUiBuilder {
 	 */
 	public PacManUiBuilder withDefaultButtons() {
 		defaultButtons = true;
-
+        buttons.put(RETRY_CAPTION, null);
 		buttons.put(STOP_CAPTION, null);
 		buttons.put(START_CAPTION, null);
 		buttons.put(BACK_CAPTION, null);
