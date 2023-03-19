@@ -1,15 +1,12 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
@@ -91,7 +88,10 @@ public class PacManUI extends JFrame {
 		setResizable(false);
 		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 		service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
+        ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
+        Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
+        setIconImage(iconImg);
 	}
 
 	public PacManUI(final Game game, final Map<String, Action> buttons,
