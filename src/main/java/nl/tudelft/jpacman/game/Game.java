@@ -174,4 +174,5 @@ public abstract class Game implements LevelObserver {
 	public int getPlayerScore() {
 		return getPlayers().get(0).getScore();
 	}
+
 }
