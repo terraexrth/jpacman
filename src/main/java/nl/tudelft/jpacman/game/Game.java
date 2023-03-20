@@ -32,9 +32,9 @@ public abstract class Game implements LevelObserver {
 	private Player player;
 	private Level level;
 
-	private double totaltime;
+	private static double totaltime;
 
-	public double getTotaltime() {
+	public static double getTotaltime() {
 		return totaltime;
 	}
 
@@ -100,6 +100,7 @@ public abstract class Game implements LevelObserver {
 			System.out.println("Continue Counting : "); // Continue Counting
 			calulatetime();
 			System.out.println("----------------------------");
+
 		}
 	}
 
@@ -167,7 +168,10 @@ public abstract class Game implements LevelObserver {
 	/**
 	 * @return An immutable list of the participants of this game.
 	 */
-	public abstract List<Player> getPlayers();
+	public List<Player> getPlayers() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getPlayers'");
+	}
 
 	/**
 	 * @return The level currently being played.
