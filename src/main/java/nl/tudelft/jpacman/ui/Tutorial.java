@@ -9,8 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Tutorial extends JFrame {
-	private JButton select;
-	private JButton continueButton;
+
 	private JButton backButton;
 
 	public Tutorial() {
@@ -25,10 +24,6 @@ public class Tutorial extends JFrame {
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);
 
-		ImageIcon continueIcon = new ImageIcon("src/main/resources/button/continue_btn.png");
-		Image continueImg = continueIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
-		ImageIcon continueBtn = new ImageIcon(continueImg);
-
 		ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
 		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon backBtn = new ImageIcon(backImg);
@@ -38,13 +33,6 @@ public class Tutorial extends JFrame {
 
 		setIconImage(iconImg);
 		this.setLocationRelativeTo(null);
-
-		continueButton = new JButton("");
-		continueButton.setIcon(continueBtn);
-		continueButton.setOpaque(false);
-		continueButton.setContentAreaFilled(false);
-		continueButton.setBorderPainted(false);
-		continueButton.setBorder(null);
 
 		backButton = new JButton("");
 		backButton.setIcon(backBtn);
@@ -68,7 +56,6 @@ public class Tutorial extends JFrame {
 		backButton.setBounds(185, 670, 200, 50);
 
 		add(backgroundLabel, BorderLayout.CENTER);
-
 	}
 
 	public static void main(String[] args) {
