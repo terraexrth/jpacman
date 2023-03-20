@@ -1,11 +1,12 @@
 package nl.tudelft.jpacman.level;
 
-import java.util.Map;
-
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Unit;
 import nl.tudelft.jpacman.sprite.AnimatedSprite;
 import nl.tudelft.jpacman.sprite.Sprite;
+
+import java.util.Map;
+
 
 /**
  * A player operated unit in our game.
@@ -13,11 +14,12 @@ import nl.tudelft.jpacman.sprite.Sprite;
  * @author Jeroen Roosen 
  */
 public class Player extends Unit {
-
     /**
      * The amount of points accumulated by this player.
      */
     private int score;
+
+    static public String name;
 
     /**
      * The animations for every direction.
@@ -83,6 +85,10 @@ public class Player extends Unit {
         this.alive = isAlive;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     /**
      * Returns the unit that caused the death of Pac-Man.
      *
@@ -109,6 +115,8 @@ public class Player extends Unit {
     public int getScore() {
         return score;
     }
+
+    public String getName(){return name;}
 
 
     @Override

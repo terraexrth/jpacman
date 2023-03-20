@@ -1,18 +1,10 @@
 package nl.tudelft.jpacman;
 
-import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.util.List;
-
 import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.game.GameFactory;
-import nl.tudelft.jpacman.level.Level;
-import nl.tudelft.jpacman.level.LevelFactory;
-import nl.tudelft.jpacman.level.MapParser;
-import nl.tudelft.jpacman.level.Player;
-import nl.tudelft.jpacman.level.PlayerFactory;
+import nl.tudelft.jpacman.level.*;
 import nl.tudelft.jpacman.npc.ghost.GhostFactory;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
@@ -21,6 +13,15 @@ import nl.tudelft.jpacman.ui.Action;
 import nl.tudelft.jpacman.ui.MainMenu;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
+
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.List;
+
+import org.json.simple.JSONObject;
+
+import javax.swing.JOptionPane;
 
 /**
  * Creates and launches the JPacMan UI.
@@ -37,6 +38,8 @@ public class Launcher {
 
 	private static PacManUI pacManUI;
 	private Game game;
+
+    //public static String username;
 
 	/**
 	 * @return The game object this launcher will start when {@link #launch()}
@@ -364,11 +367,21 @@ public class Launcher {
 	 * @throws IOException
 	 *                     When a resource could not be read.
 	 */
+    public static String showUsernameDialog() {
+        String username = JOptionPane.showInputDialog(null, "Enter your username:", "JPacman", JOptionPane.QUESTION_MESSAGE);
+        if (username == null || username.trim().isEmpty()) {
+            username = "Player";
+        }
+        return username;
+    }
 
-
-
-	public static void main(String[] args) throws IOException {
-		new MainMenu();
-		// new Launcher().launch();
+    /*public void setName(String username){
+        this.username = username;
+    }
+    public String getName(){return username;}
+    */
+    public static void main(String[] args) throws IOException {
+        new MainMenu();
+        }
 	}
-}
+

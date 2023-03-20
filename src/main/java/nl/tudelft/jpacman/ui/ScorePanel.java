@@ -8,7 +8,11 @@ import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Player;
+
+import nl.tudelft.jpacman.ui.MainMenu;
+import org.json.simple.JSONObject;
 
 /**
  * A panel consisting of a column for each player, with the numbered players on
@@ -27,7 +31,7 @@ public class ScorePanel extends JPanel {
     /**
      * The map of players and the labels their scores are on.
      */
-    private final Map<Player, JLabel> scoreLabels;
+    public final Map<Player, JLabel> scoreLabels;
 
     /**
      * The default way in which the score is shown.
@@ -53,8 +57,10 @@ public class ScorePanel extends JPanel {
         setLayout(new GridLayout(2, players.size()));
 
         for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " + i, JLabel.CENTER));
+            add(new JLabel("Player " + MainMenu.obj.get("name"), JLabel.CENTER));
         }
+        /*System.out.print(MainMenu.obj.get("name"));
+        new JLabel("Player " + MainMenu.obj.get("name"), JLabel.CENTER);*/
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
             JLabel scoreLabel = new JLabel("0", JLabel.CENTER);

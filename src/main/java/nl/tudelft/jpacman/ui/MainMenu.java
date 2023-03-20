@@ -1,12 +1,19 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.Launcher;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+
 import java.awt.BorderLayout;
 import java.awt.Image;
+import java.io.StringWriter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import java.io.IOException;
 
 public class MainMenu extends JFrame {
 	private JButton startButton;
@@ -18,6 +25,8 @@ public class MainMenu extends JFrame {
 	private Tutorial tutorialSelector;
 
 	private LeaderBorder leaderBorderSelector;
+
+    //public JSONObject obj;
 
 	public void openMap() {
 		mapSelector = new MapSelector();
@@ -61,8 +70,19 @@ public class MainMenu extends JFrame {
 	public LeaderBorder getLeaderBorderSelector() {
 		return leaderBorderSelector;
 	}
+    static Launcher launcher = new Launcher();
+    static JSONObject obj = new JSONObject();
+    String username = launcher.showUsernameDialog();
+    /*public void setName(JSONObject obj){
+        this.obj = obj;
+    }*/
 
-	public MainMenu() {
+	public MainMenu(){
+
+        obj.put("name", username);
+
+        System.out.print(obj);
+
 		// Set up the frame
 		setTitle("JPacman");
 		setSize(600, 800);
@@ -170,8 +190,16 @@ public class MainMenu extends JFrame {
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		new MainMenu();
+    /*public void setName(String username){
+        this.username = username;
+    }
+    public String getName(){return username;}
+    */
+
+	public static void main(String[] args) throws IOException {
+
+        //new MainMenu();
+
 	}
 
 }

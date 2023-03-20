@@ -89,7 +89,10 @@ public abstract class Game implements LevelObserver {
 		}
 	}
     public void retry(){
-
+        {
+            Launcher.dispose();
+            new MapSelector().setVisible(true);
+        }
 
     }
 
@@ -145,6 +148,6 @@ public abstract class Game implements LevelObserver {
 
 	@Override
 	public void levelLost() {
-		stop();
+        stop();
 	}
 }
