@@ -13,7 +13,7 @@ import nl.tudelft.jpacman.ui.MainMenu;
 import nl.tudelft.jpacman.ui.MapSelector;
 import nl.tudelft.jpacman.ui.Tutorial;
 
-public class MainMenuTest {
+public class UI {
 	private MainMenu mainMenu;
 
 	@BeforeEach
