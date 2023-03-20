@@ -95,6 +95,7 @@ public abstract class Game implements LevelObserver {
             System.out.println("Continue Counting : "); // Continue Counting
             calulatetime();
             System.out.println("----------------------------");
+
 		}
 	}
 

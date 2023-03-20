@@ -1,13 +1,14 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.GridLayout;
+import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.plaf.metal.OceanTheme;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Player;
 
 /**
@@ -29,6 +30,10 @@ public class ScorePanel extends JPanel {
      */
     private final Map<Player, JLabel> scoreLabels;
 
+    private PacManUiBuilder pacManUiBuilder;
+
+
+
     /**
      * The default way in which the score is shown.
      */
@@ -43,14 +48,29 @@ public class ScorePanel extends JPanel {
     /**
      * Creates a new score panel with a column for each player.
      *
-     * @param players
-     *            The players to display the scores of.
+     * @param players The players to display the scores of.
+     * @param level
      */
-    public ScorePanel(List<Player> players) {
+    public ScorePanel(List<Player> players, int level) {
         super();
         assert players != null;
 
-        setLayout(new GridLayout(2, players.size()));
+        setLayout(new GridLayout(3, players.size()));
+
+        String MapName = " ";
+        if (level== 1) {
+            MapName = "Forest";
+        } else if (level == 2) {
+            MapName = "Snow";
+        } else if (level == 3) {
+            MapName = "Desert";
+        } else if (level == 4) {
+            MapName = "Water";
+        } else if (level == 5) {
+            MapName = "Candy";
+        }
+        JLabel MapLabel = new JLabel("Map : "+ MapName,JLabel.CENTER);
+        add(MapLabel);
 
         for (int i = 1; i <= players.size(); i++) {
             add(new JLabel("Player " + i, JLabel.CENTER));
@@ -61,7 +81,13 @@ public class ScorePanel extends JPanel {
             scoreLabels.put(player, scoreLabel);
             add(scoreLabel);
         }
+
+
     }
+
+
+
+
 
     /**
      * Refreshes the scores of the players.
