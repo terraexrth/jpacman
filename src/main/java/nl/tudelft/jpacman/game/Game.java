@@ -36,7 +36,19 @@ public abstract class Game implements LevelObserver {
     public double getTotaltime() {
         return totaltime;
     }
+    public double calulatetime(){
+        if (getTotaltime()>=60.0){
+            double minutes = (double)getTotaltime()/60;
+            double second = (double)getTotaltime()%60;
+            System.out.format("%d minutes : %.3f second",(int)minutes,second);
 
+          // System.out.format("Your time is: %f min %f second",minutes,remainingSec);
+        }else {
+            System.out.println(getTotaltime());
+
+        }
+        return  getTotaltime();
+    }
     public void setTotaltime(double totaltime) {
         this.totaltime = totaltime;
     }
@@ -77,7 +89,12 @@ public abstract class Game implements LevelObserver {
 				getLevel().start();
 			}
             Stopwatch.start();
-            Stopwatch.getElapsedTimeSecs();
+            System.out.println("Start");
+            System.out.println("Always Start from : ");
+            Stopwatch.getElapsedTimeSecs(); // Count from 0
+            System.out.println("Continue Counting : "); // Continue Counting
+            calulatetime();
+            System.out.println("----------------------------");
 		}
 	}
 
@@ -93,8 +110,12 @@ public abstract class Game implements LevelObserver {
 			inProgress = false;
 			getLevel().stop();
             Stopwatch.stop();
-            setTotaltime(getTotaltime() + Stopwatch.getElapsedTimeSecs());
-            System.out.println(getTotaltime());
+            System.out.println("Pause");
+            System.out.println("Time at that time : ");
+            setTotaltime(getTotaltime() + Stopwatch.getElapsedTimeSecs()); //Count from 0
+            System.out.println("Total Time : ");
+            calulatetime();
+            System.out.println("----------------------------");
 		}
 	}
 
