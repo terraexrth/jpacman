@@ -26,13 +26,19 @@ public abstract class Game implements LevelObserver {
 	private Player player;
 	private Level level;
 
-	private long totaltime;
+	private double totaltime;
 
-	public long getTotaltime() {
+	public double getTotaltime() {
 		return totaltime;
 	}
 
-	public void setTotaltime(long totaltime) {
+	private double totaltime;
+
+	public double getTotaltime() {
+		return totaltime;
+	}
+
+	public void setTotaltime(double totaltime) {
 		this.totaltime = totaltime;
 	}
 
