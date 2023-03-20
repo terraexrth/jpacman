@@ -32,12 +32,6 @@ public abstract class Game implements LevelObserver {
 		return totaltime;
 	}
 
-	private double totaltime;
-
-	public double getTotaltime() {
-		return totaltime;
-	}
-
 	public void setTotaltime(double totaltime) {
 		this.totaltime = totaltime;
 	}
@@ -174,11 +168,16 @@ public abstract class Game implements LevelObserver {
 	@Override
 	public void levelLost() {
 
+		System.out.println();
+
 		stop();
 	}
 
 	public int getPlayerScore() {
 		return getPlayers().get(0).getScore();
 	}
+	// public int getCurrentMap(){
+	// return pacManUI.getMap();
+	// }
 
 }
