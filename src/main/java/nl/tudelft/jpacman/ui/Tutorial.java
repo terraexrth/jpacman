@@ -12,13 +12,12 @@ import nl.tudelft.jpacman.Launcher;
 
 public class Tutorial extends JFrame {
 	private JButton select;
-	private JButton continueButton;
 	private JButton backButton;
 
 	public Tutorial() {
 		setTitle("JPacman");
 		setSize(600, 800);
-		setResizable(false);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 
@@ -27,22 +26,16 @@ public class Tutorial extends JFrame {
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);
 
-		ImageIcon continueIcon = new ImageIcon("src/main/resources/button/continue_btn.png");
-		Image continueImg = continueIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
-		ImageIcon continueBtn = new ImageIcon(continueImg);
 
 		ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
 		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon backBtn = new ImageIcon(backImg);
 
-		this.setLocationRelativeTo(null);
+        ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
+        Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
-		continueButton = new JButton("");
-		continueButton.setIcon(continueBtn);
-		continueButton.setOpaque(false);
-		continueButton.setContentAreaFilled(false);
-		continueButton.setBorderPainted(false);
-		continueButton.setBorder(null);
+        setIconImage(iconImg);
+		this.setLocationRelativeTo(null);
 
 		backButton = new JButton("");
 		backButton.setIcon(backBtn);
@@ -51,23 +44,15 @@ public class Tutorial extends JFrame {
 		backButton.setBorderPainted(false);
 		backButton.setBorder(null);
 
-		continueButton.addActionListener(e -> {
-			this.setVisible(false);
-			new Launcher().launch_tutorial();
-		});
-
 		backButton.addActionListener(e -> {
 			this.setVisible(false);
 			new MainMenu();
 		});
 
-		backgroundLabel.add(continueButton, BorderLayout.CENTER);
 		backgroundLabel.add(backButton, BorderLayout.CENTER);
-		continueButton.setBounds(305, 670, 200, 50);
-		backButton.setBounds(80, 670, 200, 50);
+		backButton.setBounds(200, 650, 200, 50);
 
 		add(backgroundLabel, BorderLayout.CENTER);
-
 	}
 
 	public static void main(String[] args) {

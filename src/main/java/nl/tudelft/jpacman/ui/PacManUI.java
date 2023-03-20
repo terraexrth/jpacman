@@ -1,15 +1,12 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
@@ -69,21 +66,38 @@ public class PacManUI extends JFrame {
 	 *                       The formatter used to display the current score.
 	 */
 
-	public int level;
+	public int mapLevel;
 
-	public int getLevel() {
-		return level;
-	}
+	// public void setLevel(int level) {
+	// this.mapLevel = level;
+	// System.out.println("PacUI Setter Level : " + this.mapLevel);
+	// }
 
-	public void setLevel(int level) {
+	// public int getLevel() {
+	// System.out.println("PacUI Getter Level : " + this.mapLevel);
+	// return mapLevel;
+	// }
 
-		this.level = level;
-		System.out.println(this.level);
+	/**
+	 * Starts the "engine", the thread that redraws the interface at set
+	 * intervals.
+	 */
+	public void start() {
+		setSize(600, 800);
+		setVisible(true);
+		this.setLocationRelativeTo(null);
+		setResizable(false);
+		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+		service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
+        ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
+        Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+        setIconImage(iconImg);
 	}
 
 	public PacManUI(final Game game, final Map<String, Action> buttons,
 			final Map<Integer, Action> keyMappings,
-			ScoreFormatter scoreFormatter) {
+			ScoreFormatter scoreFormatter, int level) {
 		super("JPacman");
 		assert game != null;
 		assert buttons != null;
@@ -101,7 +115,7 @@ public class PacManUI extends JFrame {
 			scorePanel.setScoreFormatter(scoreFormatter);
 		}
 
-		boardPanel = new BoardPanel(game, getLevel());
+		boardPanel = new BoardPanel(game, level);
 
 		Container contentPanel = getContentPane();
 		contentPanel.setLayout(new BorderLayout());
@@ -110,20 +124,6 @@ public class PacManUI extends JFrame {
 		contentPanel.add(boardPanel, BorderLayout.CENTER);
 
 		pack();
-	}
-
-	/**
-	 * Starts the "engine", the thread that redraws the interface at set
-	 * intervals.
-	 */
-	public void start() {
-		setSize(600, 800);
-		setVisible(true);
-		this.setLocationRelativeTo(null);
-		setResizable(false);
-		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-		service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
-
 	}
 
 	/**

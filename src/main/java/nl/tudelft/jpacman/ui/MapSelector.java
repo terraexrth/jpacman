@@ -22,7 +22,7 @@ public class MapSelector extends JFrame {
 	public MapSelector() {
 		setTitle("JPacman");
 		setSize(600, 800);
-		setResizable(false);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 
@@ -56,6 +56,10 @@ public class MapSelector extends JFrame {
 		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon backBtn = new ImageIcon(backImg);
 
+        ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
+        Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+        setIconImage(iconImg);
 		this.setLocationRelativeTo(null);
 
 		map1Button = new JButton("");

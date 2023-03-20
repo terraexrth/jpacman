@@ -30,6 +30,16 @@ public abstract class Game implements LevelObserver {
     private Player player;
     private Level level;
 
+
+
+    private double totaltime;
+    public double getTotaltime() {
+        return totaltime;
+    }
+
+    public void setTotaltime(double totaltime) {
+        this.totaltime = totaltime;
+    }
 	/**
 	 * Object that locks the start and stop methods.
 	 */
@@ -66,6 +76,8 @@ public abstract class Game implements LevelObserver {
 				getLevel().addObserver(this);
 				getLevel().start();
 			}
+            Stopwatch.start();
+            Stopwatch.getElapsedTimeSecs();
 		}
 	}
 
@@ -80,6 +92,9 @@ public abstract class Game implements LevelObserver {
 			}
 			inProgress = false;
 			getLevel().stop();
+            Stopwatch.stop();
+            setTotaltime(getTotaltime() + Stopwatch.getElapsedTimeSecs());
+            System.out.println(getTotaltime());
 		}
 	}
 
@@ -89,13 +104,34 @@ public abstract class Game implements LevelObserver {
 		}
 	}
     public void retry(){
+<<<<<<< HEAD
         {
             Launcher.dispose();
             new MapSelector().setVisible(true);
+=======
+        if (pacManUI!=null){
+            Launcher.setVisible(false);
+        }
+        Launcher.dispose();
+        Launcher.setVisible(false);
+        if  (Launcher.getMap() == 1){
+            new Launcher().launch_map1();
+        }
+        else if  (Launcher.getMap() == 2){
+            new Launcher().launch_map2();
+        }
+        else if  (Launcher.getMap() == 3){
+            new Launcher().launch_map3();
+        }
+        else if  (Launcher.getMap() == 4){
+            new Launcher().launch_map4();
+        }
+        else if  (Launcher.getMap() == 5){
+            new Launcher().launch_map5();
+>>>>>>> origin
         }
 
     }
-
 
     public void back() {
 		{
@@ -103,10 +139,6 @@ public abstract class Game implements LevelObserver {
 			new MapSelector().setVisible(true);
 		}
 	}
-
-
-
-
 
 	/**
 	 * @return <code>true</code> iff the game is started and in progress.
@@ -147,7 +179,11 @@ public abstract class Game implements LevelObserver {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void levelLost() {
         stop();
+=======
+	public void levelLost() { stop();
+>>>>>>> origin
 	}
 }

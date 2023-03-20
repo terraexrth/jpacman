@@ -27,6 +27,10 @@ public class LeaderBorder extends JFrame {
 		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon backBtn = new ImageIcon(backImg);
 
+        ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
+        Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+        setIconImage(iconImg);
 		backButton = new JButton("Select");
 
 		backButton.addActionListener(e -> {
