@@ -56,6 +56,7 @@ public class ScorePanel extends JPanel {
         assert players != null;
 
         setLayout(new GridLayout(3, players.size()));
+        setBackground(Color.BLACK);
 
         String MapName = " ";
         if (level== 1) {
@@ -70,15 +71,16 @@ public class ScorePanel extends JPanel {
             MapName = "Candy";
         }
         JLabel MapLabel = new JLabel("Map : "+ MapName,JLabel.CENTER);
+        MapLabel.setForeground(Color.white);
         add(MapLabel);
-
-        for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " + i, JLabel.CENTER));
-        }
+        JLabel title = new JLabel("Player Name", JLabel.CENTER);
+        title.setForeground(Color.WHITE);
+        add(title);
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
             JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
             scoreLabels.put(player, scoreLabel);
+            scoreLabel.setForeground(Color.white);
             add(scoreLabel);
         }
 
