@@ -1,6 +1,10 @@
 package nl.tudelft.jpacman.game;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.json.simple.JSONObject;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.board.Direction;
@@ -160,6 +164,12 @@ public abstract class Game implements LevelObserver {
 		}
 	}
 
+	public int getPlayerScore() {
+		return getPlayers().get(0).getScore();
+	}
+
+	Map<String, String> scoreboard = new HashMap<>();
+
 	@Override
 	public void levelWon() {
 		stop();
@@ -167,15 +177,14 @@ public abstract class Game implements LevelObserver {
 
 	@Override
 	public void levelLost() {
+		scoreboard.put("name", "earth");
+		scoreboard.put("score", Integer.toString(getPlayerScore()));
 
-		System.out.println();
-
+		JSONObject scoreTemplate = new JSONObject(scoreboard);
+		System.out.println(scoreTemplate);
 		stop();
 	}
 
-	public int getPlayerScore() {
-		return getPlayers().get(0).getScore();
-	}
 	// public int getCurrentMap(){
 	// return pacManUI.getMap();
 	// }
