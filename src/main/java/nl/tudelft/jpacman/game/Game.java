@@ -1,19 +1,15 @@
 package nl.tudelft.jpacman.game;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import nl.tudelft.jpacman.Launcher;
-import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
-import nl.tudelft.jpacman.level.MapParser;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.ui.MapSelector;
 import nl.tudelft.jpacman.ui.PacManUI;
-import nl.tudelft.jpacman.ui.PacManUiBuilder;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -27,19 +23,19 @@ public abstract class Game implements LevelObserver {
 	 */
 	private boolean inProgress;
 	private PacManUI pacManUI;
-    private Player player;
-    private Level level;
+	private Player player;
+	private Level level;
 
+	private long totaltime;
 
+	public long getTotaltime() {
+		return totaltime;
+	}
 
-    private long totaltime;
-    public long getTotaltime() {
-        return totaltime;
-    }
+	public void setTotaltime(long totaltime) {
+		this.totaltime = totaltime;
+	}
 
-    public void setTotaltime(long totaltime) {
-        this.totaltime = totaltime;
-    }
 	/**
 	 * Object that locks the start and stop methods.
 	 */
@@ -76,8 +72,8 @@ public abstract class Game implements LevelObserver {
 				getLevel().addObserver(this);
 				getLevel().start();
 			}
-            Stopwatch.start();
-            Stopwatch.getElapsedTimeSecs();
+			Stopwatch.start();
+			Stopwatch.getElapsedTimeSecs();
 		}
 	}
 
@@ -92,9 +88,9 @@ public abstract class Game implements LevelObserver {
 			}
 			inProgress = false;
 			getLevel().stop();
-            Stopwatch.stop();
-            setTotaltime(getTotaltime() + Stopwatch.getElapsedTimeSecs());
-            System.out.println(getTotaltime());
+			Stopwatch.stop();
+			setTotaltime(getTotaltime() + Stopwatch.getElapsedTimeSecs());
+			System.out.println(getTotaltime());
 		}
 	}
 
@@ -103,31 +99,28 @@ public abstract class Game implements LevelObserver {
 			System.exit(0);
 		}
 	}
-    public void retry(){
-        if (pacManUI!=null){
-            Launcher.setVisible(false);
-        }
-        Launcher.dispose();
-        Launcher.setVisible(false);
-        if  (Launcher.getMap() == 1){
-            new Launcher().launch_map1();
-        }
-        else if  (Launcher.getMap() == 2){
-            new Launcher().launch_map2();
-        }
-        else if  (Launcher.getMap() == 3){
-            new Launcher().launch_map3();
-        }
-        else if  (Launcher.getMap() == 4){
-            new Launcher().launch_map4();
-        }
-        else if  (Launcher.getMap() == 5){
-            new Launcher().launch_map5();
-        }
 
-    }
+	public void retry() {
+		if (pacManUI != null) {
+			Launcher.setVisible(false);
+		}
+		Launcher.dispose();
+		Launcher.setVisible(false);
+		if (Launcher.getMap() == 1) {
+			new Launcher().launch_map1();
+		} else if (Launcher.getMap() == 2) {
+			new Launcher().launch_map2();
+		} else if (Launcher.getMap() == 3) {
+			new Launcher().launch_map3();
+		} else if (Launcher.getMap() == 4) {
+			new Launcher().launch_map4();
+		} else if (Launcher.getMap() == 5) {
+			new Launcher().launch_map5();
+		}
 
-    public void back() {
+	}
+
+	public void back() {
 		{
 			Launcher.dispose();
 			new MapSelector().setVisible(true);
@@ -174,6 +167,11 @@ public abstract class Game implements LevelObserver {
 
 	@Override
 	public void levelLost() {
+
 		stop();
+	}
+
+	public int getPlayerScore() {
+		return getPlayers().get(0).getScore();
 	}
 }
