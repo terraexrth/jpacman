@@ -32,12 +32,12 @@ public abstract class Game implements LevelObserver {
 
 
 
-    private long totaltime;
-    public long getTotaltime() {
+    private double totaltime;
+    public double getTotaltime() {
         return totaltime;
     }
 
-    public void setTotaltime(long totaltime) {
+    public void setTotaltime(double totaltime) {
         this.totaltime = totaltime;
     }
 	/**
@@ -173,7 +173,6 @@ public abstract class Game implements LevelObserver {
 	}
 
 	@Override
-	public void levelLost() {
-		stop();
+	public void levelLost() { stop();
 	}
 }

@@ -1,8 +1,8 @@
 package nl.tudelft.jpacman.game;
 
 public class Stopwatch {
-    private static long startTime = 0;
-    private static long stopTime = 0;
+    private static double startTime = 0;
+    private static double stopTime = 0;
     private static boolean running = false;
 
 
@@ -18,12 +18,12 @@ public class Stopwatch {
 
 
     //elaspsed time in seconds
-    public static long getElapsedTimeSecs() {
-        long elapsed;
+    public static double getElapsedTimeSecs() {
+        double elapsed;
         if (running) {
-            elapsed = ((System.currentTimeMillis() - startTime) / 1000);
+            elapsed = ((System.currentTimeMillis() - startTime) / 1000.0);
         } else {
-            elapsed = ((stopTime - startTime) / 1000);
+            elapsed = ((stopTime - startTime) / 1000.0);
         }
         System.out.println(elapsed);
         return elapsed;
