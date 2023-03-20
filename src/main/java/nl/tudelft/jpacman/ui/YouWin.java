@@ -13,20 +13,20 @@ import javax.swing.JLabel;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.level.Player;
 
-public class YouLose extends JFrame {
+public class YouWin extends JFrame {
 	JButton test;
 	JLabel label1 = new JLabel("test");
 	JLabel label2 = new JLabel(" ");
 	JButton back;
 
-	public YouLose() {
+	public YouWin() {
 		setTitle("JPacman");
 		setSize(600, 800);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 
-		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/lose_bg.png");
+		ImageIcon backgroundImage = new ImageIcon("src/main/resources/bg/win_bg.png");
 		Image image = backgroundImage.getImage().getScaledInstance(600, 800, Image.SCALE_SMOOTH);
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);

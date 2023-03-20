@@ -14,6 +14,7 @@ import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.ui.MapSelector;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.YouLose;
+import nl.tudelft.jpacman.ui.YouWin;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -203,6 +204,8 @@ public abstract class Game implements LevelObserver {
 	@Override
 	public void levelWon() {
 		stop();
+		Launcher.dispose();
+		new YouWin().setVisible(true);
 	}
 
 	@Override
