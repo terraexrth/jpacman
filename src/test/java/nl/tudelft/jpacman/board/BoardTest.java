@@ -43,18 +43,12 @@ public class BoardTest {
      *
      * @throws InterruptedException Since we're sleeping in this test.
      */
-    
-    @Test
-    void MainmenuStartTest() throws InterruptedException{
-
-        Thread.sleep(1000);
-    }
 
     private Direction getRandomDirection() {
         return Direction.values()[new Random().nextInt(Direction.values().length)];
     }
 
-    @DisplayName("TC01: Score Board 1")
+    @DisplayName("TC01: Score BoMainmenuStartTestard 1")
     @Test
     void Board1Test() throws InterruptedException{
         launcher = new Launcher();
