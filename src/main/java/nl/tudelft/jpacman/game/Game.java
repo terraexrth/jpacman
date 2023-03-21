@@ -210,6 +210,8 @@ public abstract class Game implements LevelObserver {
 		stop();
 		Launcher.dispose();
 		new YouWin().setVisible(true);
+
+		resetTime();
 	}
 
 	@Override
