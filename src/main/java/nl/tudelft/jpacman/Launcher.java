@@ -36,6 +36,11 @@ public class Launcher {
 
 	private static PacManUI pacManUI;
 	private Game game;
+
+    public static void setMap(int map) {
+        Launcher.map = map;
+    }
+
     private static int map;
 	/**
 	 * @return The game object this launcher will start when {@link #launch()}
@@ -303,7 +308,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame(), 1);
-        map = 1;
+        setMap(1);
 		pacManUI.start();
 	}
 
@@ -312,7 +317,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame(), 2);
-        map = 2;
+        setMap(2);
 		pacManUI.start();
 	}
 
@@ -321,7 +326,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame(), 3);
-        map = 3;
+        setMap(3);
 		pacManUI.start();
 	}
 
@@ -330,7 +335,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame(), 4);
-        map = 4;
+        setMap(4);
 		pacManUI.start();
 
 	}
@@ -340,7 +345,7 @@ public class Launcher {
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
 		pacManUI = builder.build(getGame(), 5);
-        map = 5;
+        setMap(5);
 		pacManUI.start();
 	}
 

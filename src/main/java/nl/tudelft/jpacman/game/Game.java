@@ -1,14 +1,14 @@
 package nl.tudelft.jpacman.game;
 
-import java.util.ArrayList;
+import java.io.FileWriter;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 import nl.tudelft.jpacman.Launcher;
-import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
-import nl.tudelft.jpacman.level.MapParser;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.ui.MapSelector;
@@ -17,6 +17,8 @@ import nl.tudelft.jpacman.ui.PacManUiBuilder;
 import org.json.simple.parser.ParseException;
 
 //import static nl.tudelft.jpacman.ui.PacManUI.obj;
+import nl.tudelft.jpacman.ui.YouLose;
+import nl.tudelft.jpacman.ui.YouWin;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -28,32 +30,48 @@ public abstract class Game implements LevelObserver {
 	/**
 	 * <code>true</code> if the game is in progress.
 	 */
+
+	private static FileWriter file;
 	private boolean inProgress;
 	private PacManUI pacManUI;
-    private Player player;
-    private Level level;
+	private Player player;
+	private Level level;
+
+	public static double totaltime;
 
 
 
-    public static double totaltime;
-    public static double getTotaltime() {
-        return totaltime;
+	public static double getTotaltime() {
+		return totaltime;
+	}
+    public  static String getStringtotaltime(){
+        return String.format("%.3f",totaltime);
     }
-    public static double calulatetime(){
-        if (getTotaltime()>=60.0){
-            double minutes = (double)getTotaltime()/60;
-            double second = (double)getTotaltime()%60;
-            System.out.format("%d minutes : %.3f second",(int)minutes,second);
-            //return getTotaltime();
-          // System.out.format("Your time is: %f min %f second",minutes,remainingSec);
-        }else {
-            System.out.println(getTotaltime());
-        }
-        return getTotaltime();
-    }
-    public void setTotaltime(double totaltime) {
-        this.totaltime = totaltime;
-    }
+
+	public static String calulatetime() {
+		double minutes = (double) getTotaltime() / 60;
+		double second = (double) getTotaltime() % 60;
+		if (getTotaltime() >= 60.0) {
+
+            System.out.format("%d minutes : %.2f second", (int) minutes, second);
+
+			// System.out.format("Your time is: %f min %f second",minutes,remainingSec);
+		} else {
+			System.out.println(getTotaltime());
+
+		}
+		return String.format("%d : %.2f s", (int) minutes, second);
+	}
+
+	public void setTotaltime(double totaltime) {
+		this.totaltime = totaltime;
+	}
+
+	public void resetTime() {
+		setTotaltime(0.0);
+	}
+
+
 	/**
 	 * Object that locks the start and stop methods.
 	 */
@@ -90,13 +108,14 @@ public abstract class Game implements LevelObserver {
 				getLevel().addObserver(this);
 				getLevel().start();
 			}
-            Stopwatch.start();
-            System.out.println("Start");
-            System.out.println("Always Start from : ");
-            Stopwatch.getElapsedTimeSecs(); // Count from 0
-            System.out.println("Continue Counting : "); // Continue Counting
-            calulatetime();
-            System.out.println("----------------------------");
+			Stopwatch.start();
+			System.out.println("Start");
+			System.out.println("Always Start from : ");
+			Stopwatch.getElapsedTimeSecs(); // Count from 0
+			System.out.println("Continue Counting : "); // Continue Counting
+			calulatetime();
+			System.out.println("----------------------------");
+
 		}
 	}
 
@@ -111,13 +130,13 @@ public abstract class Game implements LevelObserver {
 			}
 			inProgress = false;
 			getLevel().stop();
-            Stopwatch.stop();
-            System.out.println("Pause");
-            System.out.println("Time at that time : ");
-            setTotaltime(getTotaltime() + Stopwatch.getElapsedTimeSecs()); //Count from 0
-            System.out.println("Total Time : ");
-            calulatetime();
-            System.out.println("----------------------------");
+			Stopwatch.stop();
+			System.out.println("Pause");
+			System.out.println("Time at that time : ");
+			setTotaltime(getTotaltime() + Stopwatch.getElapsedTimeSecs()); // Count from 0
+			System.out.println("Total Time : ");
+			calulatetime();
+			System.out.println("----------------------------");
 		}
 	}
 
@@ -127,30 +146,24 @@ public abstract class Game implements LevelObserver {
 		}
 	}
     public void retry() {
-        if (pacManUI!=null){
+        if (pacManUI != null) {
             Launcher.setVisible(false);
         }
         Launcher.dispose();
         Launcher.setVisible(false);
-        if  (Launcher.getMap() == 1){
+        if (Launcher.getMap() == 1) {
             new Launcher().launch_map1();
-        }
-        else if  (Launcher.getMap() == 2){
+        } else if (Launcher.getMap() == 2) {
             new Launcher().launch_map2();
-        }
-        else if  (Launcher.getMap() == 3){
+        } else if (Launcher.getMap() == 3) {
             new Launcher().launch_map3();
-        }
-        else if  (Launcher.getMap() == 4){
+        } else if (Launcher.getMap() == 4) {
             new Launcher().launch_map4();
-        }
-        else if  (Launcher.getMap() == 5){
+        } else if (Launcher.getMap() == 5) {
             new Launcher().launch_map5();
         }
-
     }
-
-    public void back() {
+	public void back() {
 		{
 			Launcher.dispose();
             setTotaltime(0);
@@ -168,7 +181,10 @@ public abstract class Game implements LevelObserver {
 	/**
 	 * @return An immutable list of the participants of this game.
 	 */
-	public abstract List<Player> getPlayers();
+	public List<Player> getPlayers() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getPlayers'");
+	}
 
 	/**
 	 * @return The level currently being played.
@@ -191,14 +207,36 @@ public abstract class Game implements LevelObserver {
 		}
 	}
 
+	public int getPlayerScore() {
+		return getPlayers().get(0).getScore();
+	}
+
+	JSONObject scoreboard = new JSONObject();
+
 	@Override
 	public void levelWon() {
-        stop();
+		stop();
+		Launcher.dispose();
+		new YouWin().setVisible(true);
+
+		//resetTime();
 	}
 
 	@Override
 	public void levelLost() {
 
-        stop();
+		stop();
+		Launcher.dispose();
+
+		new YouLose();
+		;
+
+		//resetTime();
+
 	}
+
+	// public int getCurrentMap(){
+	// return pacManUI.getMap();
+	// }
+
 }

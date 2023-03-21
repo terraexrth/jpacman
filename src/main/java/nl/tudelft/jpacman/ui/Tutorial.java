@@ -8,10 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import nl.tudelft.jpacman.Launcher;
-
 public class Tutorial extends JFrame {
-	private JButton select;
+
 	private JButton backButton;
 
 	public Tutorial() {
@@ -26,15 +24,14 @@ public class Tutorial extends JFrame {
 		ImageIcon realImg = new ImageIcon(image);
 		JLabel backgroundLabel = new JLabel(realImg);
 
-
 		ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
 		Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
 		ImageIcon backBtn = new ImageIcon(backImg);
 
-        ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
-        Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
+		Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
-        setIconImage(iconImg);
+		setIconImage(iconImg);
 		this.setLocationRelativeTo(null);
 
 		backButton = new JButton("");
@@ -44,13 +41,19 @@ public class Tutorial extends JFrame {
 		backButton.setBorderPainted(false);
 		backButton.setBorder(null);
 
+		// continueButton.addActionListener(e -> {
+		// this.setVisible(false);
+		// new Launcher().launch_tutorial();
+		// });
+
 		backButton.addActionListener(e -> {
 			this.setVisible(false);
 			new MainMenu();
 		});
 
 		backgroundLabel.add(backButton, BorderLayout.CENTER);
-		backButton.setBounds(200, 650, 200, 50);
+
+		backButton.setBounds(185, 670, 200, 50);
 
 		add(backgroundLabel, BorderLayout.CENTER);
 	}

@@ -2,12 +2,19 @@ package nl.tudelft.jpacman.ui;
 
 import java.awt.*;
 import java.io.IOException;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Image;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.Game;
@@ -107,10 +114,11 @@ public class PacManUI extends JFrame {
 		setResizable(false);
 		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 		service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
-        ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
-        Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon icon = new ImageIcon("src/main/resources/icon.png");
+		Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
         setIconImage(iconImg);
+
 
 	}
 
@@ -150,10 +158,12 @@ public class PacManUI extends JFrame {
 
 		JPanel buttonPanel = new ButtonPanel(buttons, this);
 
-		scorePanel = new ScorePanel(game.getPlayers());
+		scorePanel = new ScorePanel(game.getPlayers(),level);
 		if (scoreFormatter != null) {
 			scorePanel.setScoreFormatter(scoreFormatter);
 		}
+
+		setMap(level);
 
 		boardPanel = new BoardPanel(game, level);
 
@@ -164,6 +174,16 @@ public class PacManUI extends JFrame {
 		contentPanel.add(boardPanel, BorderLayout.CENTER);
 
 		pack();
+	}
+
+	public int currentMap;
+
+	public void setMap(int map) {
+		this.currentMap = map;
+	};
+
+	public int getMap() {
+		return currentMap;
 	}
 
 	/**

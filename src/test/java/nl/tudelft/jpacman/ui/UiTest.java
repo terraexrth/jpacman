@@ -1,4 +1,4 @@
-package nl.tudelft.jpacman;
+package nl.tudelft.jpacman.ui;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,7 +13,7 @@ import nl.tudelft.jpacman.ui.MainMenu;
 import nl.tudelft.jpacman.ui.MapSelector;
 import nl.tudelft.jpacman.ui.Tutorial;
 
-public class UI {
+public class UiTest {
 	private MainMenu mainMenu;
 
 	@BeforeEach
@@ -27,13 +27,13 @@ public class UI {
 	}
 
 	@Test
-	@DisplayName("T01: MainMenu should be visible on startup")
+	@DisplayName("T01: MainMenu visible on startup")
 	void testMainMenuVisible() {
 		assertThat(mainMenu.isVisible()).isTrue();
 	}
 
 	@Test
-	@DisplayName("T02: Clicking the start button should open the map selector")
+	@DisplayName("T02: Open the map selection")
 	void testStartButton() {
 		JButton startButton = mainMenu.getStartButton();
 		MapSelector mapSelector = mainMenu.getMapSelector();
@@ -44,7 +44,7 @@ public class UI {
 	}
 
 	@Test
-	@DisplayName("T03: Clicking the tutorial button should open the tutorial selector")
+	@DisplayName("T03: Open the tutorial page")
 	void testTutorialButton() {
 		JButton tutorialButton = mainMenu.getTutorialButton();
 		Tutorial tutorialSelector = mainMenu.getTutorialSelector();
@@ -54,22 +54,22 @@ public class UI {
 		// assertThat(tutorialSelector.isVisible()).isTrue();
 	}
 
-	// @Test
-	// @DisplayName("T04: Clicking the leader button should open leaderboard pages")
-	// void testLeaderButton() {
-	// JButton leaderButton = mainMenu.getLeaderButton();
-	// leaderButton.doClick();
-	// assertThat(mainMenu.isVisible()).isFalse();
-	// assertThat(mainMenu.getLeaderBorderSelector()).isNotNull();
-	// assertThat(mainMenu.getMapSelector()).isNull();
-	// assertThat(mainMenu.getTutorialSelector()).isNull();
-	// }
-
+    @DisplayName("T04: Exit button (close window)")
 	@Test
-	@DisplayName("T04: Clicking the exit button should close the window")
 	void testExitButton() {
 		JButton exitButton = mainMenu.getExitButton();
 		exitButton.doClick();
 		assertThat(mainMenu.isVisible()).isFalse();
 	}
+
+    /* @Test
+     @DisplayName("T04: Clicking the leader button should open leaderboard pages")
+     void testLeaderButton() {
+     JButton leaderButton = mainMenu.getLeaderButton();
+     leaderButton.doClick();
+     assertThat(mainMenu.isVisible()).isFalse();
+     assertThat(mainMenu.getLeaderBorderSelector()).isNotNull();
+     assertThat(mainMenu.getMapSelector()).isNull();
+     assertThat(mainMenu.getTutorialSelector()).isNull();
+     }*/
 }
