@@ -1,17 +1,15 @@
 package nl.tudelft.jpacman.ui;
 
+import java.awt.Image;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import nl.tudelft.jpacman.Launcher;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
-
-import javax.swing.*;
 
 /**
  * Builder for the JPac-Man UI.
@@ -19,7 +17,7 @@ import javax.swing.*;
  * @author Jeroen Roosen
  */
 public class PacManUiBuilder {
-    public static String username;
+	public static String username;
 	/**
 	 * Caption for the default stop button.
 	 */
@@ -35,8 +33,8 @@ public class PacManUiBuilder {
 	 */
 	private static final String EXIT_CAPTION = "Exit";
 	private static final String BACK_CAPTION = "Back";
-    private static final String RETRY_CAPTION = "Retry";
-    private final Map<String, Action> buttons;
+	private static final String RETRY_CAPTION = "Retry";
+	private final Map<String, Action> buttons;
 
 	/**
 	 * Map of key events and their actions.
@@ -53,9 +51,6 @@ public class PacManUiBuilder {
 	 */
 	private ScoreFormatter scoreFormatter = null;
 
-
-
-
 	/**
 	 * Creates a new Pac-Man UI builder without any mapped keys or buttons.
 	 */
@@ -66,8 +61,8 @@ public class PacManUiBuilder {
 		this.defaultButtons = false;
 		this.buttons = new LinkedHashMap<>();
 		this.keyMappings = new HashMap<>();
-        username = showUsernameDialog();
-    }
+		username = showUsernameDialog();
+	}
 
 	/**
 	 * Creates a new Pac-Man UI with the set keys and buttons.
@@ -76,23 +71,29 @@ public class PacManUiBuilder {
 	 *             The game to build the UI for.
 	 * @return A new Pac-Man UI with the set keys and buttons.
 	 */
-    public static String showUsernameDialog() {
-        String username = JOptionPane.showInputDialog(null, "Enter your username:", "JPacman", JOptionPane.QUESTION_MESSAGE);
-        if (username == null || username.trim().isEmpty()) {
-            username = "Player";
-        }
-        //return username;
-        return username;
-    }
+	public static String showUsernameDialog() {
 
+		ImageIcon icon = new ImageIcon("src/main/resources/user_icon.png");
+		Image sizeImage = icon.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
+		ImageIcon realIcon = new ImageIcon(sizeImage);
+		String username = (String) JOptionPane.showInputDialog(null, "Enter your username:", "JPacman",
+				JOptionPane.QUESTION_MESSAGE, realIcon, null, " ");
 
-	public PacManUI build(final Game game, int level){
+		if (username == null || username.trim().isEmpty()) {
+			username = "Guest";
+		}
+
+		// return username;
+		return username;
+	}
+
+	public PacManUI build(final Game game, int level) {
 		assert game != null;
 
 		if (defaultButtons) {
-            addRetryButton(game);
+			addRetryButton(game);
 			addStopButton(game);
-            addStartButton(game);
+			addStartButton(game);
 			addBackButton(game);
 			addExitButton(game);
 		}
@@ -127,11 +128,12 @@ public class PacManUiBuilder {
 		buttons.put(BACK_CAPTION, game::back);
 
 	}
-    private void addRetryButton(final Game game) {
-        assert game != null;
 
-        buttons.put(RETRY_CAPTION, game::retry);
-    }
+	private void addRetryButton(final Game game) {
+		assert game != null;
+
+		buttons.put(RETRY_CAPTION, game::retry);
+	}
 
 	/**
 	 * Adds a button with the caption {@value #START_CAPTION} that starts the
@@ -190,7 +192,7 @@ public class PacManUiBuilder {
 	 */
 	public PacManUiBuilder withDefaultButtons() {
 		defaultButtons = true;
-        buttons.put(RETRY_CAPTION, null);
+		buttons.put(RETRY_CAPTION, null);
 		buttons.put(STOP_CAPTION, null);
 		buttons.put(START_CAPTION, null);
 		buttons.put(BACK_CAPTION, null);
