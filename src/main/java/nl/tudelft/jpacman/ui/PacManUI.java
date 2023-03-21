@@ -1,6 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -8,8 +9,19 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
+import org.json.simple.JSONObject;
+import java.io.FileWriter;
+
+import nl.tudelft.jpacman.Launcher;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+
+import org.json.simple.parser.ParseException;
+import org.json.simple.parser.JSONParser;
+
 
 /**
  * The default JPacMan UI frame. The PacManUI consists of the following
@@ -38,7 +50,7 @@ public class PacManUI extends JFrame {
 	 */
 	private static final int FRAME_INTERVAL = 40;
 
-	/**
+    /**
 	 * The panel displaying the player scores.
 	 */
 	private final ScorePanel scorePanel;
@@ -67,7 +79,13 @@ public class PacManUI extends JFrame {
 
 	public int mapLevel;
 
-	// public void setLevel(int level) {
+    static Launcher launcher = new Launcher();
+    //public static JSONObject obj = new JSONObject();
+    //public static String username = showUsernameDialog();
+    public static JSONArray array = new JSONArray();
+
+
+    // public void setLevel(int level) {
 	// this.mapLevel = level;
 	// System.out.println("PacUI Setter Level : " + this.mapLevel);
 	// }
@@ -76,11 +94,12 @@ public class PacManUI extends JFrame {
 	// System.out.println("PacUI Getter Level : " + this.mapLevel);
 	// return mapLevel;
 	// }
-
 	/**
 	 * Starts the "engine", the thread that redraws the interface at set
 	 * intervals.
 	 */
+
+
 	public void start() {
 		setSize(600, 800);
 		setVisible(true);
@@ -92,15 +111,37 @@ public class PacManUI extends JFrame {
         Image iconImg = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
         setIconImage(iconImg);
+
 	}
 
 	public PacManUI(final Game game, final Map<String, Action> buttons,
 			final Map<Integer, Action> keyMappings,
-			ScoreFormatter scoreFormatter, int level) {
+			ScoreFormatter scoreFormatter, int level){
 		super("JPacman");
 		assert game != null;
 		assert buttons != null;
 		assert keyMappings != null;
+
+        System.out.println("--------"+array);
+        //public static String username = launcher.showUsernameDialog();
+
+
+//        obj.put("name", username);
+//        obj.put("time", null);
+
+        //System.out.println(obj);
+
+        //JSONArray array = new JSONArray();
+
+
+        /*
+        try (FileWriter file = new FileWriter("scoreboard.json")) {
+            file.write(obj.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

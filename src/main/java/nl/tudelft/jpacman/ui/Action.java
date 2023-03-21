@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
+import org.json.simple.parser.ParseException;
+
 /**
  * An action that can be executed.
  *

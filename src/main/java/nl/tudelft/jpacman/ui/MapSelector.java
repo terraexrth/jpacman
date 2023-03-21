@@ -10,8 +10,11 @@ import javax.swing.JLabel;
 
 import nl.tudelft.jpacman.Launcher;
 
+//import static nl.tudelft.jpacman.ui.PacManUI.showUsernameDialog;
+
 public class MapSelector extends JFrame {
-	private JButton select;
+    public static String username;
+    private JButton select;
 	private JButton map1Button;
 	private JButton map2Button;
 	private JButton map3Button;
@@ -72,6 +75,7 @@ public class MapSelector extends JFrame {
 		map1Button.addActionListener(e -> {
 			this.setVisible(false);
 			new Launcher().launch_map1();
+
 		});
 
 		map2Button = new JButton("");
@@ -80,6 +84,7 @@ public class MapSelector extends JFrame {
 		map2Button.setContentAreaFilled(false);
 		map2Button.setBorderPainted(false);
 		map2Button.setBorder(null);
+
 
 		map2Button.addActionListener(e -> {
 			this.setVisible(false);

@@ -15,7 +15,14 @@ import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.board.Unit;
+import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.npc.Ghost;
+import nl.tudelft.jpacman.ui.MapSelector;
+import nl.tudelft.jpacman.ui.PacManUI;
+import nl.tudelft.jpacman.ui.PacManUiBuilder;
+import org.json.simple.JSONObject;
+
+//import static nl.tudelft.jpacman.ui.PacManUI.obj;
 
 /**
  * A level of Pac-Man. A level consists of the board with the players and the
@@ -266,6 +273,16 @@ public class Level {
         if (!isAnyPlayerAlive()) {
             for (LevelObserver observer : observers) {
                 observer.levelLost();
+                JSONObject obj = new JSONObject();
+                //String username = PacManUI.tmp;
+
+                obj.put("name", PacManUiBuilder.username);
+                obj.put("time", null);
+
+                obj.put("time", Game.getTotaltime());
+                System.out.println(obj);
+                PacManUI.array.add(obj);
+                System.out.println(PacManUI.array);
             }
         }
         if (remainingPellets() == 0) {

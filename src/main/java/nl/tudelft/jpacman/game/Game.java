@@ -14,6 +14,9 @@ import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.ui.MapSelector;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
+import org.json.simple.parser.ParseException;
+
+//import static nl.tudelft.jpacman.ui.PacManUI.obj;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -32,22 +35,21 @@ public abstract class Game implements LevelObserver {
 
 
 
-    private double totaltime;
-    public double getTotaltime() {
+    public static double totaltime;
+    public static double getTotaltime() {
         return totaltime;
     }
-    public double calulatetime(){
+    public static double calulatetime(){
         if (getTotaltime()>=60.0){
             double minutes = (double)getTotaltime()/60;
             double second = (double)getTotaltime()%60;
             System.out.format("%d minutes : %.3f second",(int)minutes,second);
-
+            //return getTotaltime();
           // System.out.format("Your time is: %f min %f second",minutes,remainingSec);
         }else {
             System.out.println(getTotaltime());
-
         }
-        return  getTotaltime();
+        return getTotaltime();
     }
     public void setTotaltime(double totaltime) {
         this.totaltime = totaltime;
@@ -124,7 +126,7 @@ public abstract class Game implements LevelObserver {
 			System.exit(0);
 		}
 	}
-    public void retry(){
+    public void retry() {
         if (pacManUI!=null){
             Launcher.setVisible(false);
         }
@@ -151,7 +153,8 @@ public abstract class Game implements LevelObserver {
     public void back() {
 		{
 			Launcher.dispose();
-			new MapSelector().setVisible(true);
+            setTotaltime(0);
+            new MapSelector().setVisible(true);
 		}
 	}
 
@@ -190,10 +193,12 @@ public abstract class Game implements LevelObserver {
 
 	@Override
 	public void levelWon() {
-		stop();
+        stop();
 	}
 
 	@Override
-	public void levelLost() { stop();
+	public void levelLost() {
+
+        stop();
 	}
 }

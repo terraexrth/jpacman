@@ -4,8 +4,14 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
+import javax.swing.*;
 
 /**
  * Builder for the JPac-Man UI.
@@ -13,7 +19,7 @@ import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
  * @author Jeroen Roosen
  */
 public class PacManUiBuilder {
-
+    public static String username;
 	/**
 	 * Caption for the default stop button.
 	 */
@@ -30,7 +36,7 @@ public class PacManUiBuilder {
 	private static final String EXIT_CAPTION = "Exit";
 	private static final String BACK_CAPTION = "Back";
     private static final String RETRY_CAPTION = "Retry";
-	private final Map<String, Action> buttons;
+    private final Map<String, Action> buttons;
 
 	/**
 	 * Map of key events and their actions.
@@ -47,6 +53,9 @@ public class PacManUiBuilder {
 	 */
 	private ScoreFormatter scoreFormatter = null;
 
+
+
+
 	/**
 	 * Creates a new Pac-Man UI builder without any mapped keys or buttons.
 	 */
@@ -57,7 +66,8 @@ public class PacManUiBuilder {
 		this.defaultButtons = false;
 		this.buttons = new LinkedHashMap<>();
 		this.keyMappings = new HashMap<>();
-	}
+        username = showUsernameDialog();
+    }
 
 	/**
 	 * Creates a new Pac-Man UI with the set keys and buttons.
@@ -66,7 +76,17 @@ public class PacManUiBuilder {
 	 *             The game to build the UI for.
 	 * @return A new Pac-Man UI with the set keys and buttons.
 	 */
-	public PacManUI build(final Game game, int level) {
+    public static String showUsernameDialog() {
+        String username = JOptionPane.showInputDialog(null, "Enter your username:", "JPacman", JOptionPane.QUESTION_MESSAGE);
+        if (username == null || username.trim().isEmpty()) {
+            username = "Player";
+        }
+        //return username;
+        return username;
+    }
+
+
+	public PacManUI build(final Game game, int level){
 		assert game != null;
 
 		if (defaultButtons) {
@@ -76,6 +96,7 @@ public class PacManUiBuilder {
 			addBackButton(game);
 			addExitButton(game);
 		}
+
 		return new PacManUI(game, buttons, keyMappings, scoreFormatter, level);
 	}
 

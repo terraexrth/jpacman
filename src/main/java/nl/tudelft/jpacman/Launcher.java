@@ -1,18 +1,10 @@
 package nl.tudelft.jpacman;
 
-import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.util.List;
-
 import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.game.GameFactory;
-import nl.tudelft.jpacman.level.Level;
-import nl.tudelft.jpacman.level.LevelFactory;
-import nl.tudelft.jpacman.level.MapParser;
-import nl.tudelft.jpacman.level.Player;
-import nl.tudelft.jpacman.level.PlayerFactory;
+import nl.tudelft.jpacman.level.*;
 import nl.tudelft.jpacman.npc.ghost.GhostFactory;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
@@ -21,6 +13,13 @@ import nl.tudelft.jpacman.ui.Action;
 import nl.tudelft.jpacman.ui.MainMenu;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
+
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
 
 /**
  * Creates and launches the JPacMan UI.
@@ -291,7 +290,7 @@ public class Launcher {
 	 * Creates and starts a JPac-Man game.
 	 */
 
-	public void launch() {
+	public void launch(){
 		makeGame();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
@@ -299,7 +298,7 @@ public class Launcher {
 		pacManUI.start();
 	}
 
-	public void launch_map1() {
+	public void launch_map1(){
 		makeGame_1();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
@@ -308,7 +307,7 @@ public class Launcher {
 		pacManUI.start();
 	}
 
-	public void launch_map2() {
+	public void launch_map2(){
 		makeGame_2();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
@@ -317,7 +316,7 @@ public class Launcher {
 		pacManUI.start();
 	}
 
-	public void launch_map3() {
+	public void launch_map3(){
 		makeGame_3();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
@@ -326,7 +325,7 @@ public class Launcher {
 		pacManUI.start();
 	}
 
-	public void launch_map4() {
+	public void launch_map4(){
 		makeGame_4();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
@@ -336,7 +335,7 @@ public class Launcher {
 
 	}
 
-	public void launch_map5() {
+	public void launch_map5(){
 		makeGame_5();
 		PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
 		addSinglePlayerKeys(builder);
@@ -365,14 +364,20 @@ public class Launcher {
 	}
 
 	/**
-	 * Main execution method for the Launcher.
-	 *
-	 * @param args
-	 *             The command line arguments - which are ignored.
-	 * @throws IOException
-	 *                     When a resource could not be read.
-	 */
-
+     * Main execution method for the Launcher.
+     *
+     * @param args The command line arguments - which are ignored.
+     * @return
+     * @throws IOException When a resource could not be read.
+     */
+    /*public static String showUsernameDialog() {
+        String username = JOptionPane.showInputDialog(null, "Enter your username:", "JPacman", JOptionPane.QUESTION_MESSAGE);
+        if (username == null || username.trim().isEmpty()) {
+            username = "Player";
+        }
+        //return username;
+        return username;
+    }*/
 
 
 	public static void main(String[] args) throws IOException {

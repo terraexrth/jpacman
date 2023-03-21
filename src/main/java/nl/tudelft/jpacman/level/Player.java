@@ -4,8 +4,10 @@ import java.util.Map;
 
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Unit;
+import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.sprite.AnimatedSprite;
 import nl.tudelft.jpacman.sprite.Sprite;
+import nl.tudelft.jpacman.ui.PacManUI;
 
 /**
  * A player operated unit in our game.
@@ -79,6 +81,7 @@ public class Player extends Unit {
         }
         if (!isAlive) {
             deathSprite.restart();
+
         }
         this.alive = isAlive;
     }
