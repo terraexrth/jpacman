@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.level;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -283,11 +285,38 @@ public class Level {
                 System.out.println(obj);
                 PacManUI.array.add(obj);
                 System.out.println(PacManUI.array);
+
+
+                try (FileWriter file = new FileWriter("scoreboard.json")) {
+                    file.write(PacManUI.array.toJSONString());
+                    file.flush();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         if (remainingPellets() == 0) {
             for (LevelObserver observer : observers) {
                 observer.levelWon();
+
+                JSONObject obj = new JSONObject();
+                obj.put("name", PacManUiBuilder.username);
+                obj.put("time", null);
+
+                obj.put("time", Game.getTotaltime());
+                System.out.println(obj);
+                PacManUI.array.add(obj);
+                System.out.println(PacManUI.array);
+
+
+                try (FileWriter file = new FileWriter("scoreboard.json")) {
+                    file.write(PacManUI.array.toJSONString());
+                    file.flush();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
