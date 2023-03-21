@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;
@@ -22,6 +23,7 @@ import nl.tudelft.jpacman.npc.Ghost;
 import nl.tudelft.jpacman.ui.MapSelector;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
+import nl.tudelft.jpacman.ui.ScorePanel;
 import org.json.simple.JSONObject;
 
 //import static nl.tudelft.jpacman.ui.PacManUI.obj;
@@ -279,15 +281,15 @@ public class Level {
                 //String username = PacManUI.tmp;
 
                 obj.put("name", PacManUiBuilder.username);
-                obj.put("time", null);
-
+                obj.put("score",Player.score);
                 obj.put("time", Game.getTotaltime());
+                obj.put("map", ScorePanel.getMapName());
                 System.out.println(obj);
                 PacManUI.array.add(obj);
                 System.out.println(PacManUI.array);
 
 
-                try (FileWriter file = new FileWriter("scoreboard.json")) {
+                try (FileWriter file = new FileWriter("src/main/resources")) {
                     file.write(PacManUI.array.toJSONString());
                     file.flush();
 
@@ -302,15 +304,15 @@ public class Level {
 
                 JSONObject obj = new JSONObject();
                 obj.put("name", PacManUiBuilder.username);
-                obj.put("time", null);
-
+                obj.put("score",Player.score);
                 obj.put("time", Game.getTotaltime());
+                obj.put("map", Launcher.getMap());
                 System.out.println(obj);
                 PacManUI.array.add(obj);
                 System.out.println(PacManUI.array);
 
 
-                try (FileWriter file = new FileWriter("scoreboard.json")) {
+                try (FileWriter file = new FileWriter("src/main/resources")) {
                     file.write(PacManUI.array.toJSONString());
                     file.flush();
 

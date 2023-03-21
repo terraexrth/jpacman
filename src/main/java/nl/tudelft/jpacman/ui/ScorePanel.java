@@ -58,20 +58,22 @@ public class ScorePanel extends JPanel {
      * @param players The players to display the scores of.
      * @param level
      */
+
+    public static String MapName = " ";
+
+    public static String getMapName() {
+        return MapName;
+    }
+
     public ScorePanel(List<Player> players, int level) {
         super();
         assert players != null;
-        setLayout(new GridLayout(3, players.size()));
 
-        for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " +  i, JLabel.CENTER));
-        }
+        add(new JLabel(PacManUiBuilder.username, JLabel.CENTER));
 
-
-        setLayout(new GridLayout(3, players.size()));
+        setLayout(new GridLayout(2, players.size()));
         setBackground(Color.BLACK);
 
-        String MapName = " ";
         if (level== 1) {
             MapName = "Forest";
         } else if (level == 2) {
@@ -86,7 +88,7 @@ public class ScorePanel extends JPanel {
         JLabel MapLabel = new JLabel("Map : "+ MapName,JLabel.CENTER);
         MapLabel.setForeground(Color.white);
         add(MapLabel);
-        JLabel title = new JLabel("Player Name", JLabel.CENTER);
+        JLabel title = new JLabel("Player : "+PacManUiBuilder.username, JLabel.CENTER);
         title.setForeground(Color.WHITE);
         add(title);
         scoreLabels = new LinkedHashMap<>();
@@ -99,9 +101,6 @@ public class ScorePanel extends JPanel {
 
     }
 
-
-
-
     /**
      * Refreshes the scores of the players.
      */
@@ -109,19 +108,17 @@ public class ScorePanel extends JPanel {
         for (Map.Entry<Player, JLabel> entry : scoreLabels.entrySet()) {
             Player player = entry.getKey();
             String score = "";
-            String time = null;
+
             if (!player.isAlive()) {
                 score = "You died. ";
-                time = String.valueOf(Game.getTotaltime());
 
             }
             score += scoreFormatter.format(player);
-            entry.getValue().setText(score + " Time : " + time);
+            entry.getValue().setText(score);
 
         }
 
     }
-
 
     /**
      * Provide means to format the score for a given player.

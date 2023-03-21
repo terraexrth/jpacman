@@ -19,7 +19,7 @@ public class Player extends Unit {
 	/**
 	 * The amount of points accumulated by this player.
 	 */
-	private static int score;
+	public static int score;
 
 	/**
 	 * The animations for every direction.
