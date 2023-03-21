@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.*;
-import javax.swing.plaf.metal.OceanTheme;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Player;

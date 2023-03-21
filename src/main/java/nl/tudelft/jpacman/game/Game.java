@@ -38,20 +38,23 @@ public abstract class Game implements LevelObserver {
 	public static double getTotaltime() {
 		return totaltime;
 	}
+    public  static String getStringtotaltime(){
+        return String.format("%.3f",totaltime);
+    }
 
-	public String calulatetime() {
+	public static String calulatetime() {
 		double minutes = (double) getTotaltime() / 60;
 		double second = (double) getTotaltime() % 60;
 		if (getTotaltime() >= 60.0) {
 
-			System.out.format("%d minutes : %.3f second", (int) minutes, second);
+            System.out.format("%d minutes : %.2f second", (int) minutes, second);
 
 			// System.out.format("Your time is: %f min %f second",minutes,remainingSec);
 		} else {
 			System.out.println(getTotaltime());
 
 		}
-		return ((int) minutes + " : " + second).toString();
+		return String.format("%d : %.2f s", (int) minutes, second);
 	}
 
 	public void setTotaltime(double totaltime) {

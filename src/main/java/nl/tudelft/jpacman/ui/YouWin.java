@@ -39,7 +39,8 @@ public class YouWin extends JFrame {
 		label1.setText("Your Score : " + Player.getScore());
 		label1.setFont(new Font("monospace", Font.BOLD, 32));
 		label1.setForeground(Color.WHITE);
-		label2.setText("Your Time : " + Game.getTotaltime() + " s");
+//		label2.setText("Your Time : " + Game.getStringtotaltime() + " s");
+        label2.setText("Your Time : " + Game.calulatetime() + " minutes");
 		label2.setFont(new Font("monospace", Font.BOLD, 32));
 		label2.setForeground(Color.WHITE);
 

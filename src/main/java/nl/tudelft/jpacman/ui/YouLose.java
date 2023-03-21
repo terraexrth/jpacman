@@ -39,7 +39,12 @@ public class YouLose extends JFrame {
 		label1.setText("Your Score : " + Player.getScore());
 		label1.setFont(new Font("monospace", Font.BOLD, 32));
 		label1.setForeground(Color.WHITE);
-		label2.setText("Your Time : " + Game.getTotaltime() + " s");
+        if (Game.getTotaltime() < 60.0) {
+		    label2.setText("Your Time : " + Game.getStringtotaltime() + " s");
+		}
+        else if (Game.getTotaltime() >= 60.0) {
+            label2.setText("Your Time : " + Game.calulatetime());
+        }
 		label2.setFont(new Font("monospace", Font.BOLD, 32));
 		label2.setForeground(Color.WHITE);
 
