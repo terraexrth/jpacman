@@ -58,6 +58,10 @@ public abstract class Game implements LevelObserver {
 		this.totaltime = totaltime;
 	}
 
+	public void resetTime() {
+		setTotaltime(0.0);
+	}
+
 	/**
 	 * Object that locks the start and stop methods.
 	 */
@@ -212,8 +216,11 @@ public abstract class Game implements LevelObserver {
 	public void levelLost() {
 		stop();
 		Launcher.dispose();
-		new YouLose().setVisible(true);
+
+		new YouLose();
 		;
+
+		resetTime();
 
 	}
 

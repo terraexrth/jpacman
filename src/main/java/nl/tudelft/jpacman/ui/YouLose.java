@@ -65,5 +65,7 @@ public class YouLose extends JFrame {
 		label2.setBounds(145, 500, 1000, 50);
 		back.setBounds(200, 670, 200, 50);
 
+		setVisible(true);
+
 	}
 }
