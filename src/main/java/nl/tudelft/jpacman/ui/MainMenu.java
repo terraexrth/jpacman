@@ -161,7 +161,7 @@ public class MainMenu extends JFrame {
 		startButton.setBounds(200, 220, 200, 50);
 		tutorialButton.setBounds(200, 290, 200, 50);
 		leaderButton.setBounds(200, 360, 200, 50);
-		exitButton.setBounds(200, 360, 200, 50);
+		exitButton.setBounds(200, 430, 200, 50);
 		backgroundLabel.setLayout(null);
 		add(backgroundLabel, BorderLayout.CENTER);
 
